@@ -1,0 +1,22 @@
+
+// .overlay {
+//     position: absolute;
+//     height: 100vh;
+//     background-color: rgba(0,0,0,0.77);
+//     opacity: 50%;
+//     z-index: 18;
+
+// }
+
+.consumption-window-container {
+    position: relative;
+}
+
+
+.popup-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}   

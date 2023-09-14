@@ -25,3 +25,6 @@ dist-ssr
 
 # Vite
 vite.config.ts.timestamp*
+
+# Vercel deployment
+.vercel

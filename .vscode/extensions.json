@@ -8,6 +8,7 @@
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker",
     "pkief.material-icon-theme",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "ZixuanChen.vitest-explorer"
   ]
 }

@@ -28,3 +28,6 @@ vite.config.ts.timestamp*
 
 # Vercel deployment
 .vercel
+
+# Tests
+coverage

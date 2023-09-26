@@ -11,6 +11,7 @@ github_actions:
 
 tests:
   - any: ['tests/**/*']
+  - '**/*.test.ts'
 
 documentation:
   - CHANGELOG.md

@@ -4,3 +4,7 @@ node_modules
 dist
 # don't lint nyc coverage output
 coverage
+# don't lint .github
+.github
+# don't lint .md files
+*.md

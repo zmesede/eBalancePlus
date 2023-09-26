@@ -263,9 +263,9 @@ export const useEnergyStore = defineStore({
         let indexMultiplier = 1
         for (let i = storedEnergy.startIndex; i < state.availableStoredEnergyList.length; i++) {
           const amount = state.availableStoredEnergyList[i] - storedEnergy.amount * indexMultiplier
-          if (i < storedEnergy.endIndex) {
+          if (i < storedEnergy.endIndex)
             indexMultiplier++
-          }
+
           if (amount < 0 && amount < minAmount) {
             minAmount = -1 * amount
             minAmountIndex = i

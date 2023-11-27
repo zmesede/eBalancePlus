@@ -1,25 +1,25 @@
 # Components directory
-This directory contains most of your Vue.js Components.  
-- Following the [Vue.js Style Guide](https://vuejs.org/v2/style-guide/), each component should be in its own file.  
+This directory contains most of your Vue.js Components.
+- Following the [Vue.js Style Guide](https://vuejs.org/v2/style-guide/), each component should be in its own file.
 - All components are named in PascalCase.
 - Basic components are named Base*
 - Unique components used only once are named The*
-- All sub-components are named starting with the component name they belong to followed by the sub-component name.  
+- All sub-components are named starting with the component name they belong to followed by the sub-component name.
 
 ### Usage of components in the different pages
-To gain a better understanding of the components used in the different pages, here is a list of all the components used in each page, and a brief description of their role.  
-To further understand the architecture and usage of components it is recommended to use the Vue.js devtools extension for your browser and explore the `Components` tab while navigating the different pages.  
-Finally the `Icon` component is  used to display icons from the [Iconify Vue library](https://docs.iconify.design/icon-components/vue/), which hast a vast list of icon-sets you'll find [here](https://icon-sets.iconify.design/).  
+To gain a better understanding of the components used in the different pages, here is a list of all the components used in each page, and a brief description of their role.
+To further understand the architecture and usage of components it is recommended to use the Vue.js devtools extension for your browser and explore the `Components` tab while navigating the different pages.
+Finally the `Icon` component is  used to display icons from the [Iconify Vue library](https://docs.iconify.design/icon-components/vue/), which hast a vast list of icon-sets you'll find [here](https://icon-sets.iconify.design/).
 #### `Home Page`
 - `HomeCreateGame.vue` standalone section used to create a new game.
   - `BaseToggleSwitch.vue` basic toggle switch component.
-- `HomeJoinGame.vue` standalone section used to join an existing game when playing in multiplayer.  
+- `HomeJoinGame.vue` standalone section used to join an existing game when playing in multiplayer.
 
 
 #### `Setup Page`
 - `SetupProductionList.vue` list component located on the left hand side of the page, and containing all production curves available to the player.
-- `SetupProductionResume.vue` display component located in the middle left of the page, displaying the details of the production curve currently selected.  
-- `SetupScenarioList.vue` list component located on the right hand side of the page, and containing all scenarios available to the player.  
+- `SetupProductionResume.vue` display component located in the middle left of the page, displaying the details of the production curve currently selected.
+- `SetupScenarioList.vue` list component located on the right hand side of the page, and containing all scenarios available to the player.
 - `SetupScenarioResume.vue` display component located in the middle right of the page, displaying the details of the scenario currently selected.
 - `SetupValidationSection.vue` bottom section used to validate the choice of production curve and scenario, or randomize it and then start the game.
 

@@ -7,7 +7,7 @@ src
 └── styles
     ├── base
     │   ├── reset.scss
-    │   └── typography.scss    
+    │   └── typography.scss
     ├── components
     ├── layout
     ├── themes
@@ -17,8 +17,8 @@ src
     ├── views
     └── global.scss
 ```
-The directory structure was inspired by [this article](https://www.sitepoint.com/architecture-sass-project/) and a [course](https://www.educative.io/courses/sass-for-css) on educative.io accessible through the github student pack.  
-Both resources recommended the use of a 7 folder structure for Sass projects.  
+The directory structure was inspired by [this article](https://www.sitepoint.com/architecture-sass-project/) and a [course](https://www.educative.io/courses/sass-for-css) on educative.io accessible through the github student pack.
+Both resources recommended the use of a 7 folder structure for Sass projects.
 The 7 folders are:
 - base
 - components
@@ -28,5 +28,4 @@ The 7 folders are:
 - utilities
 - vendors
 
-To adapt the structure to the project, the `pages` folder was renamed to `views` and the `vendors` folder was removed.  
-
+To adapt the structure to the project, the `pages` folder was renamed to `views` and the `vendors` folder was removed.

@@ -7,4 +7,14 @@ coverage
 # don't lint .github
 .github
 # don't lint .md files
-*.md
+**/*.md
+# don't lint just file
+justfile
+# don't lint .git
+.git
+# don't lint .gitignore
+.gitignore
+# don't lint .gitattributes
+.gitattributes
+# don't lint scss files
+**/*.scss

@@ -18,10 +18,10 @@ src
 ```
 
 ## Pinia
-The project uses [Pinia](https://pinia.vuejs.org/) for state management. Pinia is a lightweight state management library for Vue 3. It is inspired by Vuex and uses a similar API.  
+The project uses [Pinia](https://pinia.vuejs.org/) for state management. Pinia is a lightweight state management library for Vue 3. It is inspired by Vuex and uses a similar API.
 
 ## Stores
-The stores are grouped by the domain they belong to. For example, the `BoardStore` contains the state related to the board. The `EquipmentStore` contains the state related to the equipments.  
+The stores are grouped by the domain they belong to. For example, the `BoardStore` contains the state related to the board. The `EquipmentStore` contains the state related to the equipments.
 
 ### Store structure
 Each store has the following structure:
@@ -39,8 +39,8 @@ export const useStore = defineStore({
   }
 })
 ```
-The id is used by Pinia to connect the store to the devtools. Naming the returned function use... is a convention across composable to make its usage idiomatic.  
+The id is used by Pinia to connect the store to the devtools. Naming the returned function use... is a convention across composable to make its usage idiomatic.
 
 ## Devtools
-It is `highly recommended` to use the [vue-js-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) extension to debug the state of the application.  
-It contains a Pinia tab which shows the state of the application in details and is an invaluable tool for debugging.  
+It is `highly recommended` to use the [vue-js-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) extension to debug the state of the application.
+It contains a Pinia tab which shows the state of the application in details and is an invaluable tool for debugging.

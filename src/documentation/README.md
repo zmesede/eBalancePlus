@@ -18,8 +18,8 @@
 - **CardPopupContent.vue**: The component where all the info of the equipment is displayed.
 - **CardPopupHeader.vue**:
 - **CardPopupModificationButtons.vue**:
-- **CardPopupSaveButtons.vue**: 
-- **CardPopupTimeModifier**: 
+- **CardPopupSaveButtons.vue**:
+- **CardPopupTimeModifier**:
 
 
 ### Board
@@ -30,7 +30,7 @@
 - **BoardIconsBar.vue**:
 
 
-### EnergyMenu 
+### EnergyMenu
 - **EnergyMenu.vue**:
 - **EnergyMenuAddEnergyWindow.vue**:
 - **EnergyMenuIcon.vue**:
@@ -40,7 +40,7 @@
 ### ResultMenu
 - **ResultMenuConfirmation.vue**:
 - **ResultsMenuIcon.vue**:
-- **ResultsSituationDisplay.vue**: 
+- **ResultsSituationDisplay.vue**:
 - **ResultSituationDisplayIndicators.vue**
 - **ResultsSituationDisplayIndicatorsIndicator.vue**:
 - **ResultsSituationDisplayIndicatorsRate.vue**:
@@ -65,7 +65,3 @@
 
 
 ### TheNavBar.vue:
-
-
-
-

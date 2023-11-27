@@ -12,7 +12,7 @@ src
 The `locale.json` file contains the list of available languages, and their corresponding flag. It is used by the `TheLanguageSelector` component to allow users to choose their desired display language.
 
 ## Adding a new language
-To add a new language : 
+To add a new language :
 1. Create a new file in the `locales` directory, with the language code as the file name. For example, to add a new language `es`, create a file named `es.json`.
 2. Copy the content of the `en.json` file into the new file. Replace the English text on the right with the corresponding translation.
 3. Add the language code and the corresponding flag to the `locale.json` file. For example, to add the `es` language, add the following code to the `locale.json` file:

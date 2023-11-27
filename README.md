@@ -7,7 +7,7 @@
 
 # eBalance Plus Game
 
-This project is a game designed to help people get a better idea of what impact renewable energy has on our electrical consumption.   It's goal is to help players understand how to change their consumption habits to better fit the constraints of green energy production.  The main objectives are as follows : 
+This project is a game designed to help people get a better idea of what impact renewable energy has on our electrical consumption.   It's goal is to help players understand how to change their consumption habits to better fit the constraints of green energy production.  The main objectives are as follows :
 - Learn to shift consumption to times when renewable energy is available
 - Get to know the positive impact of investing in more efficient items
 - Apprehend the order of magnitudes of the consumption of different household appliances
@@ -66,7 +66,7 @@ The desired format is a Single Page Application (SPA)
 ### Application pages
 - **Home (/)**: Home page of the application, contains the main menu allowing you to start a new game in solo or multiplayer mode
 - **Setup (/setup)**: Setup page, when creating a new game it lets you choose your production curve and your scenario
-- **Game (/game)**: Game page, contains the list of electrical appliances and the game board allowing you to add, remove and modify your consumption  
+- **Game (/game)**: Game page, contains the list of electrical appliances and the game board allowing you to add, remove and modify your consumption
 - **Results (/results)**: Results page, contains the results of the game and the different statistics
 
 ## Recommended IDE Setup
@@ -174,8 +174,8 @@ pnpm build
 - [![Sass][Sass]][Sass-url]
 
 #### Devtools
-It is `highly recommended` to use the [vue-js-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) extension to debug the state of the application.  
-It contains tabs to inspect the state of the application, the components, the routes, the store, etc, and is an indispensable tool for debugging.   
+It is `highly recommended` to use the [vue-js-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en) extension to debug the state of the application.
+It contains tabs to inspect the state of the application, the components, the routes, the store, etc, and is an indispensable tool for debugging.
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.

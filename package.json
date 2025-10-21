@@ -32,7 +32,7 @@
     "@vitest/ui": "^0.34.5",
     "eslint": "^8.49.0",
     "lint-staged": "^14.0.1",
-    "sass": "^1.68.0",
+    "sass": "^1.93.2",
     "simple-git-hooks": "^2.9.0",
     "typescript": "^4.9.3",
     "unplugin-auto-import": "^0.16.6",

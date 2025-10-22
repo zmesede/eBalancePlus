@@ -3,7 +3,7 @@
     "id": "mp_1",
     "initialMoney": 200,
     "isMoneyMenu": true,
-    "isMoneyUnlimited": false,
+    "isMoneyUnlimited": true,
     "moneyCurrency": "€",
     "moneyCurrencyIcon": "mdi:currency-eur"
   }

@@ -78,7 +78,6 @@ export default {
             :production-curve-props="gameParametersStore.getProductionCurve"
         />
       </div>
-
       <BoardConsumptionDetails
           :consumption-tile="boardStore.clickedTile"
           :production-tile="boardStore.clickedProductionTile"

@@ -45,6 +45,9 @@ export default {
       productionCurve: null as ProductionCurve | null,
       tiles: [] as Tile[],
       productionTiles: [] as Tile[],
+      isDragging: false,
+      dragTileIndex: -1,
+      dragOffset: { x: 0, y: 0 } as { x: number; y: number },
     }
   },
   watch: {
@@ -108,10 +111,48 @@ export default {
       else
         boardStore.setClickedProductionTile(null)
     },
+    canvasMouseDown(event: MouseEvent) {
+      const x = event.offsetX
+      const y = event.offsetY
+      const idx = this.tiles.findIndex((t: Tile) => this.isInsideTile(x, y, t))
+      if (idx !== -1) {
+        const tile = this.tiles[idx]
+        this.isDragging = true
+        this.dragTileIndex = idx
+        this.dragOffset = { x: x - tile.x, y: y - tile.y }
+      }
+    },
     canvasMouseMove(event: MouseEvent) {
       const x = event.offsetX
       const y = event.offsetY
       this.lastPosition = { x, y }
+
+      if (this.isDragging && this.dragTileIndex !== -1) {
+        const tile = this.tiles[this.dragTileIndex]
+        // nouvelles coordonnées (en gardant l’offset)
+        let newX = x - this.dragOffset.x
+        let newY = y - this.dragOffset.y
+
+        // (optionnel) contraintes aux bords du canvas
+        newX = Math.max(0, Math.min(newX, this.canvasWidth - tile.width))
+        newY = Math.max(0, Math.min(newY, this.canvasHeight - tile.height))
+
+        // (optionnel) aimantation à la grille temps/puissance
+        const snapX = this.pxSizeFor15m || 15
+        const snapY = (this.pxSizeFor10W || 5) // 10 W par “pas” (à adapter)
+        tile.x = Math.round(newX / snapX) * snapX
+        tile.y = Math.round(newY / snapY) * snapY
+
+        this.render()
+      }
+    },
+    canvasMouseUp() {
+      if (this.isDragging) {
+        // (optionnel) persister dans le store
+        // boardStore.updateConsumptionTilePosition(this.tiles[this.dragTileIndex].id, this.tiles[this.dragTileIndex].x, this.tiles[this.dragTileIndex].y)
+        this.isDragging = false
+        this.dragTileIndex = -1
+      }
     },
     clearCanvas(startX: number, startY: number, endX: number, endY: number) {
       if (this.canvas)
@@ -214,6 +255,8 @@ export default {
       :height="canvasHeight"
       @click="canvasClick"
       @mousemove="canvasMouseMove"
+      @mousedown="canvasMouseDown"
+      @mouseup="canvasMouseUp"
     />
   </section>
 </template>

@@ -23,7 +23,32 @@ export const useConsumptionStore = defineStore({
   },
 
   actions: {
-    async fetchAllInitialConsumptions() {
+      modifyConsumptionIndexes(consumptionId: string, startIndex: number, endIndex: number) {
+          const consumptionToModify = this.consumptionList.find(c => c.id === consumptionId)
+          if (!consumptionToModify) return
+
+          // 1) retirer l'ancienne plage de la courbe
+          for (let i = consumptionToModify.startIndex; i <= consumptionToModify.endIndex; i++) {
+              this.removeFromConsumptionCurve(i, consumptionToModify.amount)
+          }
+
+          // 2) appliquer les nouveaux index
+          consumptionToModify.startIndex = startIndex
+          consumptionToModify.endIndex = endIndex
+
+          // 3) ajouter la nouvelle plage à la courbe
+          for (let i = consumptionToModify.startIndex; i <= consumptionToModify.endIndex; i++) {
+              this.addToConsumptionCurve(i, consumptionToModify.amount)
+          }
+
+          // 4) recalculs dérivés
+          this.setListOfOverConsumption()
+          useBoardStore().setTilesFromConsumptionList()
+          if (consumptionToModify.equipment.type.isBattery) {
+              useEnergyStore().updateValues()
+          }
+      },
+      async fetchAllInitialConsumptions() {
       const consumptionsDtoData = (await import ('../data/consumptions.json')).default
       this.initialConsumptionsList = consumptionsDtoData
       useScenarioStore().fetchAllScenarios()

@@ -7,7 +7,9 @@ import BoardConsumptionDetails from '../components/BoardConsumptionDetails.vue'
 import BoardConsumptionAddWindow from '../components/BoardConsumptionAddWindow.vue'
 import EnergyMenuAddEnergyWindow from '../components/EnergyMenuAddEnergyWindow.vue'
 import EnergyMenuUseEnergyWindow from '../components/EnergyMenuUseEnergyWindow.vue'
+</script>
 
+<script lang="ts">
 export default {
   name: 'Game',
   components: {

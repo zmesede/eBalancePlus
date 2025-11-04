@@ -42,7 +42,7 @@ export default {
 
 <template>
   <div>
-    <NavBar/> <!-- ta barre de navigation -->
+    <NavBar /> <!-- ta barre de navigation -->
 
     <div v-if="displayOverlay" class="overlay"/>
     <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay"/>
@@ -61,7 +61,6 @@ export default {
       <BoardIconsBar/>
       <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy"/>
       <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy"/>
-
 
       <div class="board-list-container">
         <EquipmentList/>

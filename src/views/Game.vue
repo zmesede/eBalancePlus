@@ -7,9 +7,7 @@ import BoardConsumptionDetails from '../components/BoardConsumptionDetails.vue'
 import BoardConsumptionAddWindow from '../components/BoardConsumptionAddWindow.vue'
 import EnergyMenuAddEnergyWindow from '../components/EnergyMenuAddEnergyWindow.vue'
 import EnergyMenuUseEnergyWindow from '../components/EnergyMenuUseEnergyWindow.vue'
-</script>
 
-<script lang="ts">
 export default {
   name: 'Game',
   components: {
@@ -44,7 +42,7 @@ export default {
 
 <template>
   <div>
-    <NavBar /> <!-- ta barre de navigation -->
+    <NavBar/> <!-- ta barre de navigation -->
 
     <div v-if="displayOverlay" class="overlay"/>
     <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay"/>

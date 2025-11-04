@@ -67,7 +67,7 @@ export default {
     },
     productionCurveProps: {
       handler(newProductionCurve) {
-        this.productionCurve = ref(newProductionCurve)
+        this.productionCurve = newProductionCurve
         this.render()
       },
       immediate: true,
@@ -146,10 +146,25 @@ export default {
         this.render()
       }
     },
+    pxToIndex(px: number) {
+      const pxPer15min = this.pxSizeFor15m || 15
+      return Math.round(px / pxPer15min) // 1 index = un créneau de 15 min
+    },
+
     canvasMouseUp() {
-      if (this.isDragging) {
-        // (optionnel) persister dans le store
-        // boardStore.updateConsumptionTilePosition(this.tiles[this.dragTileIndex].id, this.tiles[this.dragTileIndex].x, this.tiles[this.dragTileIndex].y)
+      if (this.isDragging && this.dragTileIndex !== -1) {
+        const tile = this.tiles[this.dragTileIndex]
+
+        // start / end en INDEX (alignés sur la grille 15 min)
+        const startIndex = Math.max(0, this.pxToIndex(tile.x))
+        const durationIndexes = Math.max(1, this.pxToIndex(tile.width)) // au moins 1 créneau (15 min)
+        const endIndex = Math.min(96 - 1, startIndex + durationIndexes - 1) // 96 créneaux sur 24h
+
+        // Mise à jour du modèle métier (lu par le pop-up)
+        const consumptionStore = useConsumptionStore()
+        consumptionStore.modifyConsumptionIndexes(tile.id, startIndex, endIndex)
+
+        // reset drag
         this.isDragging = false
         this.dragTileIndex = -1
       }
@@ -257,6 +272,7 @@ export default {
       @mousemove="canvasMouseMove"
       @mousedown="canvasMouseDown"
       @mouseup="canvasMouseUp"
+      @mouseleave="canvasMouseLeave"
     />
   </section>
 </template>

@@ -279,5 +279,205 @@
       "minConsumption": 0,
       "maxConsumption": 2000
     }
+  },
+  {
+    "id": "television_1",
+    "energy_class": "G",
+    "typeID": "et_television_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 100,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "electric_bike_1",
+    "energy_class": "G",
+    "typeID": "et_electric_bike_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 200,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "micro_wave_1",
+    "energy_class": "G",
+    "typeID": "et_micro_wave_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "kettle_1",
+    "energy_class": "G",
+    "typeID": "et_kettle_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "internet_box_1",
+    "energy_class": "G",
+    "typeID": "et_internet_box_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 100,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "toaster_oven_1",
+    "energy_class": "G",
+    "typeID": "et_toaster_oven_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 2000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "game_console_1",
+    "energy_class": "G",
+    "typeID": "et_game_console_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 100,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "fridge_1",
+    "energy_class": "G",
+    "typeID": "et_fridge_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 150,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "computer_1",
+    "energy_class": "G",
+    "typeID": "et_computer_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 300,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "vacuum_1",
+    "energy_class": "G",
+    "typeID": "et_vacuum_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
   }
 ]

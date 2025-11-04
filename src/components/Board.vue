@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useBoardStore } from '../stores/BoardStore'
-import type { ProductionCurve } from '../types/Production'
-import type { BoardVisualParams, Tile } from '../types/Board'
-import { convertValuesListToPixelsList } from '../helpers/drawInPixels'
+import {useBoardStore} from '../stores/BoardStore'
+import type {ProductionCurve} from '../types/Production'
+import type {BoardVisualParams, Tile} from '../types/Board'
+import {convertValuesListToPixelsList} from '../helpers/drawInPixels'
 import BaseCanvas from './BaseCanvas.vue'
 </script>
 
@@ -41,11 +41,11 @@ export default {
       canvas: null as CanvasRenderingContext2D | null,
       canvasWidth: 1440,
       canvasHeight: 1500,
-      lastPosition: { x: 0, y: 0 } as { x: number; y: number },
+      lastPosition: {x: 0, y: 0} as { x: number; y: number },
       productionCurve: null as ProductionCurve | null,
       tiles: [] as Tile[],
       productionTiles: [] as Tile[],
-      hoursList: Array.from({ length: 25 }, (_, i) => i),
+      hoursList: Array.from({length: 25}, (_, i) => i),
     }
   },
   watch: {
@@ -65,7 +65,7 @@ export default {
     },
     productionCurveProps: {
       handler(newProductionCurve) {
-        this.productionCurve = ref(newProductionCurve)
+        this.productionCurve = newProductionCurve
         this.render()
       },
       immediate: true,
@@ -112,15 +112,17 @@ export default {
     canvasMouseMove(event: MouseEvent) {
       const x = event.offsetX
       const y = event.offsetY
-      this.lastPosition = { x, y }
+      this.lastPosition = {x, y}
     },
     clearCanvas(startX: number, startY: number, endX: number, endY: number) {
       if (this.canvas)
         this.canvas.clearRect(startX, startY, endX, endY)
     },
     drawTiles(tiles: Tile[]) {
-      for (const tile of tiles)
+      for (const tile of tiles) {
         this.drawRectangle(tile.x, tile.y, tile.width, tile.height, tile.color)
+        this.drawTileIcon(tile)
+      }
     },
     drawRectangle(x: number, y: number, width: number, height: number, color: string) {
       if (this.canvas) {
@@ -150,7 +152,7 @@ export default {
         let y = 0
         for (let i = 0; i < (this.canvasHeight / ySize); i++) {
           const color = is3kWLineRed && i % 3 === 0 ? 'red' : '#003C73'
-          this.drawLine(0, y, this.canvasWidth, y, color)
+          this.drawLine(0, y, this.canvasWidth, y, color, 0.5)
           y = y + ySize
         }
       }
@@ -160,7 +162,7 @@ export default {
         const xSize = this.pxSizeFor15m ? this.pxSizeFor15m : 15
         let x = 0
         for (let i = 0; i <= 24; i++) {
-          this.drawLine(x, 0, x, this.canvasHeight, '#003C73')
+          this.drawLine(x, 0, x, this.canvasHeight, '#003C73', 0.5)
           x = x + xSize * 4
         }
       }
@@ -173,8 +175,7 @@ export default {
           this.drawLine(x, this.canvasHeight - points[i], x + xSize, this.canvasHeight - points[i + 1], color)
           x = x + xSize
         }
-      }
-      else {
+      } else {
         for (let i = 0; i < points.length - 1; i++) {
           this.drawLine(x, this.canvasHeight - points[i], x + xSize, this.canvasHeight - points[i], color)
           this.drawLine(x + xSize, this.canvasHeight - points[i], x + xSize, this.canvasHeight - points[i + 1], color)
@@ -183,13 +184,25 @@ export default {
       }
       this.drawLine(x, this.canvasHeight - points[points.length - 1], x + xSize, this.canvasHeight - points[points.length - 1], color)
     },
-    drawLine(startX: number, startY: number, endX: number, endY: number, color: string) {
+    drawLine(startX: number, startY: number, endX: number, endY: number, color: string, linewidth = 3) {
       if (this.canvas) {
         this.canvas.strokeStyle = color
+        this.canvas.lineWidth = linewidth
         this.canvas.beginPath()
         this.canvas.moveTo(startX, startY)
         this.canvas.lineTo(endX, endY)
         this.canvas.stroke()
+      }
+    },
+    drawTileIcon(tile: Tile) {
+      if (!this.canvas || !tile.iconBase64) return
+      const img = new Image()
+      img.src = tile.iconBase64
+      img.onload = () => {
+        const iconSize = Math.min(tile.width, tile.height) * 0.6 // taille relative
+        const x = tile.x + tile.width / 2 - iconSize / 2
+        const y = tile.y + tile.height / 2 - iconSize / 2
+        this.canvas!.drawImage(img, x, y, iconSize, iconSize)
       }
     },
     isInsideTile(x: number, y: number, tile: Tile) {
@@ -239,9 +252,6 @@ export default {
         </div>
         <div class="legend-item">
           <span class="legend-color wind"></span> Éolien
-        </div>
-        <div class="legend-item">
-          <span class="legend-color hydro"></span> Hydro
         </div>
         <div class="legend-item">
           <span class="legend-color total"></span> Total

@@ -1,4 +1,8 @@
-<script setup lang="ts">
+
+
+
+
+<script lang="ts">
 import Board from '../components/Board.vue'
 import BaseAlert from '../components/BaseAlert.vue'
 import EquipmentList from '../components/EquipmentList.vue'
@@ -7,9 +11,6 @@ import BoardConsumptionDetails from '../components/BoardConsumptionDetails.vue'
 import BoardConsumptionAddWindow from '../components/BoardConsumptionAddWindow.vue'
 import EnergyMenuAddEnergyWindow from '../components/EnergyMenuAddEnergyWindow.vue'
 import EnergyMenuUseEnergyWindow from '../components/EnergyMenuUseEnergyWindow.vue'
-</script>
-
-<script lang="ts">
 export default {
   name: 'Game',
   components: {
@@ -43,38 +44,47 @@ export default {
 </script>
 
 <template>
-  <div v-if="displayOverlay" class="overlay" />
-  <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay" />
-  <ResultsMenuConfirmation />
-  <div id="game-page" class="view">
-    <BaseAlert
-      :should-display="consumptionStore.isOverConsumption"
-      alert-class="danger-alert"
-      alert-text="alert.overConsumption"
-    />
-    <BoardConsumptionAddWindow
-      v-if="equipmentStore.clickedEquipment"
-      :equipment="equipmentStore.clickedEquipment"
-    />
-    <BoardIconsBar />
-    <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy" />
-    <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy" />
-    <div class="board-list-container">
-      <EquipmentList />
-      <Board
-        :board-visual-params="boardStore.board.boardVisualParams"
-        :board-width="boardStore.board.width"
-        :board-height="boardStore.board.height"
-        :px-size-for15m="boardStore.tileParams.pxSizeFor15min"
-        :px-size-for10-w="boardStore.tileParams.pxSizeFor10W"
-        :consumption-tiles-list="boardStore.board.consumptionTiles"
-        :production-tiles-list="boardStore.board.productionTiles"
-        :production-curve-props="gameParametersStore.getProductionCurve"
+  <div>
+    <NavBar /> <!-- ta barre de navigation -->
+
+    <div v-if="displayOverlay" class="overlay" />
+    <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay" />
+    <ResultsMenuConfirmation />
+
+    <div id="game-page" class="view">
+      <BaseAlert
+          :should-display="consumptionStore.isOverConsumption"
+          alert-class="danger-alert"
+          alert-text="alert.overConsumption"
+      />
+      <BoardConsumptionAddWindow
+          v-if="equipmentStore.clickedEquipment"
+          :equipment="equipmentStore.clickedEquipment"
+      />
+      <BoardIconsBar />
+      <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy" />
+      <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy" />
+
+      <div class="board-list-container">
+        <EquipmentList />
+        <Board
+            :board-visual-params="boardStore.board.boardVisualParams"
+            :board-width="boardStore.board.width"
+            :board-height="boardStore.board.height"
+            :px-size-for15m="boardStore.tileParams.pxSizeFor15min"
+            :px-size-for10-w="boardStore.tileParams.pxSizeFor10W"
+            :consumption-tiles-list="boardStore.board.consumptionTiles"
+            :production-tiles-list="boardStore.board.productionTiles"
+            :production-curve-props="gameParametersStore.getProductionCurve"
+        />
+      </div>
+
+      <BoardConsumptionDetails
+          :consumption-tile="boardStore.clickedTile"
+          :production-tile="boardStore.clickedProductionTile"
       />
     </div>
-    <BoardConsumptionDetails
-      :consumption-tile="boardStore.clickedTile"
-      :production-tile="boardStore.clickedProductionTile"
-    />
   </div>
 </template>
+
+

@@ -1,8 +1,7 @@
 .modal {
     margin-bottom: 30rem;
     width: 50vw;
-    width: 50vw;
-    height: 50vh;
+  height: 50vh;
     background-color: var(--theme-color-secondary);
     border-radius: 15px;
     padding: 20px 25px 40px;
@@ -18,7 +17,6 @@
             font-size: larger;
             font-weight: bolder;
             margin-right: 1rem;
-            margin-right: 1rem;
         }
         .conso, .price {
             font-size: large;
@@ -29,12 +27,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        justify-content: center;
-        flex-direction: row;
+      flex-direction: row;
         .choice-container {
             margin-right: 20px;
-            margin-right: 20px;
-            .input-start-hour, .input-end-hour {
+
+          .input-start-hour, .input-end-hour {
                 display: flex;
             }
             input[type=time] {

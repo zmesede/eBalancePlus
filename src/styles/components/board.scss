@@ -1,16 +1,68 @@
-.board{
-    .canvas-container{
-        margin: 20px;
-        border-radius: 8px;
-        background-color: #fff;
-        display: flex;
-        justify-content: center;
-        canvas{
-            //border: 1px solid #ccc;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-            margin:5px;
-            border-radius: 5px;
-            padding-bottom: 20px;
-        }
-    }
+.board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.canvas-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.board canvas {
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background: #fff;
+  pointer-events: auto;
+}
+
+.hours-labels {
+  position: relative;
+  height: 22px;
+  margin-top: 4px;
+  padding: 0 5px;
+  width: 100%;
+}
+
+.hour-label {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  color: #333;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  user-select: none;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
 }

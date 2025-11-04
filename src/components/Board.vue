@@ -48,6 +48,7 @@ export default {
       isDragging: false,
       dragTileIndex: -1,
       dragOffset: { x: 0, y: 0 } as { x: number; y: number },
+      hoursList: Array.from({ length: 25 }, (_, i) => i),
     }
   },
   watch: {
@@ -204,7 +205,7 @@ export default {
         const ySize = (this.pxSizeFor10W ? this.pxSizeFor10W : 5) * 100
         let y = 0
         for (let i = 0; i < (this.canvasHeight / ySize); i++) {
-          const color = is3kWLineRed && i % 3 === 0 ? 'red' : '#DBEBE7'
+          const color = is3kWLineRed && i % 3 === 0 ? 'red' : '#003C73'
           this.drawLine(0, y, this.canvasWidth, y, color)
           y = y + ySize
         }
@@ -215,7 +216,7 @@ export default {
         const xSize = this.pxSizeFor15m ? this.pxSizeFor15m : 15
         let x = 0
         for (let i = 0; i <= 24; i++) {
-          this.drawLine(x, 0, x, this.canvasHeight, '#DBEBE7')
+          this.drawLine(x, 0, x, this.canvasHeight, '#003C73')
           x = x + xSize * 4
         }
       }
@@ -264,16 +265,47 @@ export default {
 
 <template>
   <section id="game-board" class="board">
+    <div
+        class="canvas-container"
+        :style="{ width: canvasWidth + 'px' }"
+    >
     <BaseCanvas
       :canvas-id="canvasId"
       :width="canvasWidth"
       :height="canvasHeight"
+      style="display:block;margin:0;padding:0;"
       @click="canvasClick"
       @mousemove="canvasMouseMove"
       @mousedown="canvasMouseDown"
       @mouseup="canvasMouseUp"
-      @mouseleave="canvasMouseLeave"
     />
+      <div class="hours-labels">
+        <div class="hours-labels" :style="{ width: canvasWidth + 'px' }">
+  <span
+      v-for="hour in hoursList"
+      :key="hour"
+      class="hour-label"
+      :style="{ left: (hour * (pxSizeFor15m * 4)) + 'px' }"
+  >
+    {{ hour === 24 ? '00' : hour.toString().padStart(2, '0') }}h
+  </span>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-color solar"></span> Solaire
+        </div>
+        <div class="legend-item">
+          <span class="legend-color wind"></span> Éolien
+        </div>
+        <div class="legend-item">
+          <span class="legend-color hydro"></span> Hydro
+        </div>
+        <div class="legend-item">
+          <span class="legend-color total"></span> Total
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 

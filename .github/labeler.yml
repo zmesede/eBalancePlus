@@ -28,8 +28,6 @@ configuration:
   - tsconfig.json
   - tsconfig.node.json
   - .pre-commit-config.yaml
-  - .eslintrc
-  - .eslintignore
   - .editorconfig
 
 dependencies:

@@ -1,8 +1,4 @@
-
-
-
-
-<script lang="ts">
+<script setup lang="ts">
 import Board from '../components/Board.vue'
 import BaseAlert from '../components/BaseAlert.vue'
 import EquipmentList from '../components/EquipmentList.vue'
@@ -11,6 +7,9 @@ import BoardConsumptionDetails from '../components/BoardConsumptionDetails.vue'
 import BoardConsumptionAddWindow from '../components/BoardConsumptionAddWindow.vue'
 import EnergyMenuAddEnergyWindow from '../components/EnergyMenuAddEnergyWindow.vue'
 import EnergyMenuUseEnergyWindow from '../components/EnergyMenuUseEnergyWindow.vue'
+</script>
+
+<script lang="ts">
 export default {
   name: 'Game',
   components: {
@@ -78,7 +77,6 @@ export default {
             :production-curve-props="gameParametersStore.getProductionCurve"
         />
       </div>
-
       <BoardConsumptionDetails
           :consumption-tile="boardStore.clickedTile"
           :production-tile="boardStore.clickedProductionTile"
@@ -86,5 +84,3 @@ export default {
     </div>
   </div>
 </template>
-
-

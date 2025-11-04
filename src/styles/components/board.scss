@@ -6,6 +6,7 @@
   justify-content: center;
   background: transparent;
   z-index: 0;
+  pointer-events: none;
 }
 
 .canvas-wrapper {
@@ -21,9 +22,9 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   background: #fff;
+  pointer-events: auto;
 }
 
-/* Bande d’heures sous le canvas */
 .hours-labels {
   position: relative;
   height: 22px;
@@ -65,10 +66,3 @@
   height: 14px;
   border-radius: 3px;
 }
-
-/* Couleurs des courbes */
-.legend-color.solar { background-color: yellow; }
-.legend-color.wind  { background-color: green; }
-.legend-color.hydro { background-color: blue; }
-.legend-color.total { background-color: black; }
-

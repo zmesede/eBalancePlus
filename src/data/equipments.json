@@ -479,5 +479,125 @@
       "minConsumption": 0,
       "maxConsumption": 2000
     }
+  },
+  {
+    "id": "heater_1",
+    "energy_class": "G",
+    "typeID": "et_heater_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "baby_bottle_warmer_1",
+    "energy_class": "G",
+    "typeID": "et_baby_bottle_warmer_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 2000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "sewing_machine_1",
+    "energy_class": "G",
+    "typeID": "et_sewing_machine_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 100,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "lighting_1",
+    "energy_class": "G",
+    "typeID": "et_lighting_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 10,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "stove_1",
+    "energy_class": "G",
+    "typeID": "et_stove_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "standby_1",
+    "energy_class": "G",
+    "typeID": "et_standby_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 10,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
   }
 ]

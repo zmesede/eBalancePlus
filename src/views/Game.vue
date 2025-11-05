@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import Board from '../components/Board.vue'
 import BaseAlert from '../components/BaseAlert.vue'
 import EquipmentList from '../components/EquipmentList.vue'
@@ -7,9 +7,7 @@ import BoardConsumptionDetails from '../components/BoardConsumptionDetails.vue'
 import BoardConsumptionAddWindow from '../components/BoardConsumptionAddWindow.vue'
 import EnergyMenuAddEnergyWindow from '../components/EnergyMenuAddEnergyWindow.vue'
 import EnergyMenuUseEnergyWindow from '../components/EnergyMenuUseEnergyWindow.vue'
-</script>
 
-<script lang="ts">
 export default {
   name: 'Game',
   components: {
@@ -35,8 +33,8 @@ export default {
   computed: {
     displayOverlay() {
       return this.equipmentStore.clickedEquipment || this.boardStore.isTileClicked
-                || this.energyStore.clickedStoreEnergy || this.gameParametersStore.showedInfoOverlay
-                || this.resultsStore.getIsConfirmationWindowOpen
+          || this.energyStore.clickedStoreEnergy || this.gameParametersStore.showedInfoOverlay
+          || this.resultsStore.getIsConfirmationWindowOpen
     },
   },
 }
@@ -44,11 +42,11 @@ export default {
 
 <template>
   <div>
-    <NavBar /> <!-- ta barre de navigation -->
+    <NavBar/> <!-- ta barre de navigation -->
 
-    <div v-if="displayOverlay" class="overlay" />
-    <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay" />
-    <ResultsMenuConfirmation />
+    <div v-if="displayOverlay" class="overlay"/>
+    <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay"/>
+    <ResultsMenuConfirmation/>
 
     <div id="game-page" class="view">
       <BaseAlert
@@ -60,12 +58,12 @@ export default {
           v-if="equipmentStore.clickedEquipment"
           :equipment="equipmentStore.clickedEquipment"
       />
-      <BoardIconsBar />
-      <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy" />
-      <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy" />
+      <BoardIconsBar/>
+      <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy"/>
+      <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy"/>
 
       <div class="board-list-container">
-        <EquipmentList />
+        <EquipmentList/>
         <Board
             :board-visual-params="boardStore.board.boardVisualParams"
             :board-width="boardStore.board.width"

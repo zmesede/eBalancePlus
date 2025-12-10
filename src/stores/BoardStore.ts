@@ -137,7 +137,7 @@ export const useBoardStore = defineStore({
                 height,
                 color: consumption.equipment.type.color,
                 logo: consumption.equipment.type.icon_name,
-                iconBase64, // ✅ ajout : image encodée en base64
+                iconBase64, //  ajout : image encodée en base64
             } as Tile
         },
         removeTileFromBoard(tileId: string) {

@@ -8,12 +8,16 @@ export default {
   components: {
     Icon,
   },
-  emits: ['modify', 'delete'],
+  emits: ['save', 'modify', 'delete'],
 }
 </script>
 
 <template>
   <div class="card-choice-buttons">
+    <button class="btn btn-save" @click="$emit('save')">
+      <Icon icon="mdi:content-save" class="btn-icon" />
+      {{ $t("button.save") }}
+    </button>
     <button class="btn btn-modify" @click="$emit('modify')">
       <Icon icon="mdi:pencil" class="btn-icon" />
       {{ $t("button.edit") }}

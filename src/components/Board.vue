@@ -49,6 +49,8 @@ export default {
       dragTileIndex: -1,
       dragOffset: { x: 0, y: 0 } as { x: number; y: number },
       hoursList: Array.from({ length: 25 }, (_, i) => i),
+      dragTileInitialX: 0,
+      dragConsumptionInitialStartIndex: 0,
     }
   },
   watch: {
@@ -116,33 +118,42 @@ export default {
       const x = event.offsetX
       const y = event.offsetY
       const idx = this.tiles.findIndex((t: Tile) => this.isInsideTile(x, y, t))
+
       if (idx !== -1) {
         const tile = this.tiles[idx]
         this.isDragging = true
         this.dragTileIndex = idx
-        this.dragOffset = { x: x - tile.x, y: y - tile.y }
+        this.dragOffset = { x: x - tile.x, y: 0 }
+
+        // on garde la position de départ du morceau cliqué
+        this.dragTileInitialX = tile.x
+
+        // on calcule le start global de TOUTE la conso (toutes les tuiles avec le même id)
+        const sameTiles = this.tiles.filter((t: Tile) => t.id === tile.id)
+        const minX = Math.min(...sameTiles.map(t => t.x))
+        this.dragConsumptionInitialStartIndex = this.pxToIndex(minX)
       }
     },
     canvasMouseMove(event: MouseEvent) {
       const x = event.offsetX
       const y = event.offsetY
-      this.lastPosition = { x, y }
+      this.lastPosition = {x, y}
 
       if (this.isDragging && this.dragTileIndex !== -1) {
         const tile = this.tiles[this.dragTileIndex]
         // nouvelles coordonnées (en gardant l’offset)
         let newX = x - this.dragOffset.x
-        let newY = y - this.dragOffset.y
+
 
         // (optionnel) contraintes aux bords du canvas
         newX = Math.max(0, Math.min(newX, this.canvasWidth - tile.width))
-        newY = Math.max(0, Math.min(newY, this.canvasHeight - tile.height))
+
 
         // (optionnel) aimantation à la grille temps/puissance
         const snapX = this.pxSizeFor15m || 15
-        const snapY = (this.pxSizeFor10W || 5) // 10 W par “pas” (à adapter)
+
         tile.x = Math.round(newX / snapX) * snapX
-        tile.y = Math.round(newY / snapY) * snapY
+
 
         this.render()
       }
@@ -156,14 +167,16 @@ export default {
       if (this.isDragging && this.dragTileIndex !== -1) {
         const tile = this.tiles[this.dragTileIndex]
 
-        // start / end en INDEX (alignés sur la grille 15 min)
-        const startIndex = Math.max(0, this.pxToIndex(tile.x))
-        const durationIndexes = Math.max(1, this.pxToIndex(tile.width)) // au moins 1 créneau (15 min)
-        const endIndex = Math.min(96 - 1, startIndex + durationIndexes - 1) // 96 créneaux sur 24h
+        // déplacement en pixels du morceau cliqué
+        const deltaPx = tile.x - this.dragTileInitialX
+        const deltaIndex = this.pxToIndex(deltaPx)
 
-        // Mise à jour du modèle métier (lu par le pop-up)
+        // nouveau start global pour TOUTE la conso
+        const newGlobalStartIndex = this.dragConsumptionInitialStartIndex + deltaIndex
+
         const consumptionStore = useConsumptionStore()
-        consumptionStore.modifyConsumptionIndexes(tile.id, startIndex, endIndex)
+        // on lui laisse gérer la durée
+        consumptionStore.moveConsumption(this.tiles[this.dragTileIndex].id, newGlobalStartIndex)
 
         // reset drag
         this.isDragging = false
@@ -267,11 +280,16 @@ export default {
     render() {
       this.clearCanvas(0, 0, this.canvasWidth, this.canvasHeight)
       this.drawHoursLines(this.boardVisualParams.shouldDisplayHoursLines)
-      this.drawKWLines(this.boardVisualParams.shouldDisplayKWLines, this.boardVisualParams.is3kWLineRed)
-      this.drawTiles(this.productionTiles)
-      this.drawTiles(this.tiles)
-      this.drawProductionCurve(this.productionCurve, this.boardVisualParams.isProductionCurveSmoothed, this.boardVisualParams.shouldDisplayProductionCurve)
-    },
+      this.drawKWLines(this.boardVisualParams.shouldDisplayKWLines, this.boardVisualParams.is3kWLineRed,)
+      // tri ici : plus longues d'abord = en bas
+      const sortedProduction = [...this.productionTiles].sort((a, b) => b.width - a.width)
+      const sortedConsumption = [...this.tiles].sort((a, b) => b.width - a.width)
+
+      this.drawTiles(sortedProduction)
+      this.drawTiles(sortedConsumption)
+
+      this.drawProductionCurve(this.productionCurve, this.boardVisualParams.isProductionCurveSmoothed, this.boardVisualParams.shouldDisplayProductionCurve,)
+    }
   },
 }
 </script>

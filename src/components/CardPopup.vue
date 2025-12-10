@@ -253,6 +253,7 @@ export default {
         v-if="!modificationParams.clickedModify
           && modificationParams.canModify
           && !modificationParams.isInitialAddPopup"
+        @save="saveConsumption"
         @modify="modify"
         @delete="deleteConsumption"
       />

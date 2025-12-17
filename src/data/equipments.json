@@ -599,5 +599,45 @@
       "minConsumption": 0,
       "maxConsumption": 2000
     }
+  },
+  {
+    "id": "tumble_dryer_1",
+    "energy_class": "G",
+    "typeID": "et_tumble_dryer_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1600,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "electric_car",
+    "energy_class": "G",
+    "typeID": "et_electric_car_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 3700,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
   }
 ]

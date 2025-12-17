@@ -42,12 +42,22 @@ export default {
 
 <template>
   <div>
-    <NavBar/> <!-- ta barre de navigation -->
-
+    <NavBar/>
     <div v-if="displayOverlay" class="overlay"/>
     <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay"/>
     <ResultsMenuConfirmation/>
-
+    <div class="canvas-layer">
+      <Board
+          :board-visual-params="boardStore.board.boardVisualParams"
+          :board-width="boardStore.board.width"
+          :board-height="boardStore.board.height"
+          :px-size-for15m="boardStore.tileParams.pxSizeFor15min"
+          :px-size-for10-w="boardStore.tileParams.pxSizeFor10W"
+          :consumption-tiles-list="boardStore.board.consumptionTiles"
+          :production-tiles-list="boardStore.board.productionTiles"
+          :production-curve-props="gameParametersStore.getProductionCurve"
+      />
+    </div>
     <div id="game-page" class="view">
       <BaseAlert
           :should-display="consumptionStore.isOverConsumption"
@@ -58,22 +68,13 @@ export default {
           v-if="equipmentStore.clickedEquipment"
           :equipment="equipmentStore.clickedEquipment"
       />
+      <!--
       <BoardIconsBar/>
       <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy"/>
       <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy"/>
-
-      <div class="board-list-container">
+      -->
+      <div class="list-container">
         <EquipmentList/>
-        <Board
-            :board-visual-params="boardStore.board.boardVisualParams"
-            :board-width="boardStore.board.width"
-            :board-height="boardStore.board.height"
-            :px-size-for15m="boardStore.tileParams.pxSizeFor15min"
-            :px-size-for10-w="boardStore.tileParams.pxSizeFor10W"
-            :consumption-tiles-list="boardStore.board.consumptionTiles"
-            :production-tiles-list="boardStore.board.productionTiles"
-            :production-curve-props="gameParametersStore.getProductionCurve"
-        />
       </div>
       <BoardConsumptionDetails
           :consumption-tile="boardStore.clickedTile"

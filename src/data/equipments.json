@@ -639,5 +639,45 @@
       "minConsumption": 0,
       "maxConsumption": 2000
     }
+  },
+  {
+    "id": "water_boiler",
+    "energy_class": "G",
+    "typeID": "et_water_boiler_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 4500,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
+  },
+  {
+    "id": "coffee_maker",
+    "energy_class": "G",
+    "typeID": "et_coffee_maker_1",
+    "equipmentCostParams": {
+      "originalPrice": 200,
+      "hasCost": false,
+      "isCostEditable": false,
+      "step": 1,
+      "minCost": 50,
+      "maxCost": 2000
+    },
+    "equipmentConsumptionParams": {
+      "originalConsumption": 1000,
+      "isConsumptionEditable": false,
+      "step": 10,
+      "minConsumption": 0,
+      "maxConsumption": 2000
+    }
   }
 ]

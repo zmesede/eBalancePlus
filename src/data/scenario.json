@@ -1,7 +1,10 @@
 [
   {
     "id": "scenario_1",
-    "names": [{ "text": "Victoria et Greg", "lang": "fr" }, { "text": "Victoria and Greg", "lang": "en" }],
+    "names": [
+      { "text": "Vie de couple en appartement – actifs en semaine (hiver)", "lang": "fr" },
+      { "text": "Working couple in an apartment – weekday routine (winter)", "lang": "en" }
+    ],
     "dayId": "day_wednesday",
     "seasonId": "season_winter",
     "descriptions": [
@@ -13,183 +16,249 @@
       }
     ],
     "additionalEquipmentTypesIds": ["et_tumble_dryer_1", "et_washing_machine_1", "et_water_boiler_1", "et_electric_car_1", "et_coffee_maker_1", "et_stove_1", "et_dishwasher_1", "et_standby_1", "et_fridge_1", "et_television_1", "et_heater_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_2",
-    "names": [{"text":"Léa", "lang": "fr" }],
+    "names": [
+      { "text": "Personne seule en appartement – journée de travail", "lang": "fr" },
+      { "text": "Single person in an apartment – workday", "lang": "en" }
+    ],
     "dayId": "day_wednesday",
     "seasonId": "season_autumn",
     "descriptions": [
       {
         "text": "Léa habite seule dans un petit appartement de 45 m² situé en centre-ville. Elle travaille comme graphiste et quitte son logement vers 8 h pour se rendre à son bureau, avant de rentrer vers 18 h. L’appartement est entièrement électrique : chauffage, plaques à induction, chauffe-eau et électroménager. En semaine, la majorité de sa consommation se concentre le matin, avec la préparation du petit-déjeuner et la douche, puis le soir avec la préparation du dîner, la télévision et son ordinateur personnel. Léa aime regarder une série pendant deux heures avant de se coucher, souvent vers 23 h. Elle doit veiller à ne pas trop consommer d’électricité pendant les heures pleines, surtout en hiver où le chauffage tourne davantage.  ", "lang": "fr"
+      },
+      {
+        "text": "Léa lives alone in a small 45 m² apartment located in the city center. She works as a graphic designer and leaves her home around 8 a.m. to go to her office, returning around 6 p.m. The apartment is fully electric: heating, induction cooktop, water heater, and household appliances. During the week, most of her energy consumption happens in the morning, preparing breakfast and taking a shower, and in the evening when she cooks dinner, watches TV, and uses her personal computer. Léa enjoys watching a TV series for about two hours before going to bed, usually around 11 p.m. She has to be careful not to consume too much electricity during peak hours, especially in winter when the heating runs more often." , "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_heater_1", "et_stove_1", "et_water_boiler_1", "et_television_1", "et_computer_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_internet_box_1", "et_toaster_oven_1", "et_toaster_1", "et_coffee_maker_1", "et_fridge_1", "et_vacuum_1", "et_lighting_1", "et_wireless_speaker_1", "et_electric_fan_1", "et_electric_toothbrush_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_3",
-    "names": [{"text": "Thomas et Camille", "lang": "fr"}],
+    "names": [
+      { "text": "Couple actif en maison avec voiture électrique", "lang": "fr" },
+      { "text": "Working couple in a house with electric car", "lang": "en" }
+    ],
     "dayId": "day_monday",
     "seasonId": "season_spring",
     "descriptions": [
       {
         "text": "Thomas et Camille vivent dans une maison de 100 m² en périphérie d’une grande ville. Tous deux travaillent à temps plein et partent le matin vers 7 h 30 pour rentrer vers 17 h 30. Leur foyer dispose d’une cuisine équipée, d’un lave-vaisselle, d’une machine à laver et d’un ballon d’eau chaude électrique. Leur principal poste de consommation est le chauffage, assuré par une pompe à chaleur, ainsi que la recharge de leur voiture électrique qu’ils branchent généralement le soir. Leur objectif est clair : la voiture doit être totalement chargée pour 7 h le lendemain matin, et l’eau chaude doit être disponible dès 6 h pour les douches matinales. En journée, la maison reste vide, ils programment donc certains appareils comme le lave-linge ou le ballon d’eau chaude. ", "lang": "fr"
+      },
+      {
+        "text": "Thomas and Camille live in a 100 m² house on the outskirts of a large city. Both work full-time and leave home around 7:30 a.m., returning around 5:30 p.m. Their household includes a fully equipped kitchen, a dishwasher, a washing machine, and an electric water heater. Their main sources of energy consumption are heating, provided by a heat pump, and charging their electric car, which they usually plug in during the evening. Their goal is clear: the car must be fully charged by 7 a.m. the next morning, and hot water must be available from 6 a.m. for their morning showers. During the day, the house remains empty, so they schedule certain appliances like the washing machine or the water heater to run while they’re away. ", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_dishwasher_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_water_boiler_1", "et_heater_1", "et_electric_car_1", "et_television_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box_1", "et_toaster_oven_1", "et_toaster_1", "et_coffee_maker_1", "et_fridge_1", "et_computer_1", "et_vacuum_1", "et_lighting_1", "et_electric_fan_1", "et_electric_mixer_1", "et_electric_toothbrush_1", "et_stove_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_4",
-    "names": [{"text": "Sophie et Marc", "lang": "fr"}],
+    "names": [
+      { "text": "Famille avec enfants – forte consommation matin et soir (hiver)", "lang": "fr" },
+      { "text": "Family with children – high morning and evening consumption (winter)", "lang": "en" }
+    ],
     "dayId": "day_thursday",
     "seasonId": "season_winter",
     "descriptions": [
       {
         "text": "Sophie et Marc vivent dans une maison de 130 m² avec leurs deux enfants, âgés de 8 et 12 ans. Les journées sont bien remplies : les parents partent au travail à 8 h tandis que les enfants sont à l’école. Le matin, toute la famille se prépare presque simultanément, ce qui crée un pic de consommation entre 6 h 30 et 7 h 30. La maison est équipée d’un four, d’une plaque de cuisson électrique, d’un lave-linge, d’un sèche-linge et de plusieurs ordinateurs utilisés le soir pour les devoirs et les loisirs. Le dîner est pris vers 19 h 30, ce qui provoque un deuxième pic de consommation important entre 18 h et 21 h. Le chauffage est alimenté par une pompe à chaleur assurant le confort du foyer. ", "lang": "fr"
+      },
+      {
+        "text": "Sophie and Marc live in a 130 m² house with their two children, aged 8 and 12. Their days are very busy: the parents leave for work at 8 a.m. while the children go to school. In the morning, the whole family gets ready almost at the same time, which creates a peak in energy consumption between 6:30 a.m. and 7:30 a.m. The house is equipped with an oven, an electric cooktop, a washing machine, a tumble dryer, and several computers used in the evening for homework and leisure activities.Dinner is eaten around 7:30 p.m., which causes a second significant peak in consumption between 6 p.m. and 9 p.m. Heating is provided by a heat pump, ensuring comfort in the home.","lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_toaster_oven_1", "et_stove_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_computer_1", "et_dishwasher_1", "et_television_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box_1", "et_water_boiler_1", "et_toaster_1", "et_game_console_1", "et_coffee_maker_1", "et_fridge_1", "et_vacuum_1", "et_heater_1", "et_sewing_machine_1", "et_lighting_1", "et_electric_fan_1", "et_electric_mixer_1", "et_electric_toothbrush_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_5",
-    "names": [{"text": "4 étudiants", "lang": "fr"}],
+    "names": [
+      { "text": "Colocation étudiante – usages électriques variables", "lang": "fr" },
+      { "text": "Student shared flat – irregular electricity usage", "lang": "en" }
+    ],
     "dayId": "day_wednesday",
     "seasonId": "season_spring",
     "descriptions": [
       {
         "text": "Dans un grand appartement de 90 m², quatre étudiants partagent un logement non loin de leur université. Le chauffage est collectif et la majorité de leur consommation provient de l’usage d’appareils individuels : ordinateurs portables, consoles de jeux, télévision commune, micro-ondes, bouilloire et plaques de cuisson. Leurs horaires étant très variables, certains cuisinent tôt le matin, d’autres tard le soir, ce qui entraîne une consommation électrique assez chaotique. Leur principal défi est d’organiser leurs usages pour éviter les pics de puissance lorsque plusieurs appareils énergivores fonctionnent en même temps. Le frigo et le routeur Wi-Fi doivent rester allumés en permanence.", "lang": "fr"
+      },
+      {
+        "text": "In a large 90 m² apartment, four students share accommodation close to their university. Heating is collective, and most of their energy consumption comes from the use of individual appliances: laptops, game consoles, a shared television, a microwave, a kettle, and electric cooktops. Because their schedules vary greatly, some cook early in the morning while others do so late at night, resulting in fairly erratic electricity consumption. Their main challenge is organizing their usage to avoid power peaks when several energy-intensive appliances are operating at the same time. The refrigerator and the Wi-Fi router must remain on at all times.", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_heater_1", "et_computer_1", "et_game_console_1", "et_television_1", "et_micro_wave_1", "et_kettle_1", "et_stove_1", "et_fridge_1", "et_electric_fan_1", "et_electric_piano_1", "et_electric_guitar_1", "et_wireless_speaker_1", "et_lighting_1", "et_vacuum_1", "et_coffee_maker_1", "et_toaster_1", "et_toaster_oven_1", "et_water_boiler_1", "et_internet_box_1", "et_tumble_dryer_1", "et_washing_machine_1", "et_dishwasher_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_6",
-    "names": [{"text": "Jean et Marie", "lang": "fr"}],
+    "names": [
+      { "text": "Couple de retraités en maison – présence continue", "lang": "fr" },
+      { "text": "Retired couple in a house – all-day presence", "lang": "en" }
+    ],
     "dayId": "day_sunday",
     "seasonId": "season_summer",
     "descriptions": [
       {
         "text": "Jean et Marie habitent à la campagne dans une maison de 120 m². Retraités depuis peu, ils passent la plupart de leurs journées à la maison. Leur rythme de vie est plus calme, mais leur consommation énergétique est continue : chauffage, télévision, préparation des repas, lessive et petit atelier de bricolage dans le garage. Ils se lèvent vers 7 h, le repas du midi est pris à la maison, l’après-midi est dédiée aux activités de loisir ou au jardin, et ils passent leur soirée devant la télévision.", "lang": "fr"
+      },
+      {
+        "text": "Jean and Marie live in the countryside in a 120 m² house. Recently retired, they spend most of their days at home. Their pace of life is more relaxed, but their energy consumption is continuous: heating, television, meal preparation, laundry, and a small DIY workshop in the garage. They get up around 7 a.m., have lunch at home, spend the afternoon on leisure activities or in the garden, and spend their evenings watching television.", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_dishwasher_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_television_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box", "et_water_boiler_1", "et_toaster_oven_1", "et_toaster_1", "et_coffee_maker_1", "et_fridge_1", "et_computer_1", "et_vacuum_1", "et_heater_1", "et_sewing_machine_1", "et_lighting_1", "et_electric_drill_1", "et_electric_fan_1", "et_electric_mixer_1", "et_electric_toothbrush_1", "et_stove_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_7",
-    "names": [{"text": "La famille Martin", "lang": "fr"}],
+    "names": [
+      { "text": "Famille nombreuse à la maison le week-end", "lang": "fr" },
+      { "text": "Large family at home during the weekend", "lang": "en" }
+    ],
     "dayId": "day_saturday",
     "seasonId": "season_autumn",
     "descriptions": [
       {
         "text": "La famille Martin habite une grande maison de 140 m² dans une petite commune périurbaine. Les deux parents et leurs trois enfants, âgés de 6, 10 et 15 ans, profitent d’un week-end à la maison. Personne ne travaille ni n’a école, et la vie du foyer s’organise autour des activités domestiques et des loisirs. Le matin, tout le monde se lève entre 8 h et 9 h : petit-déjeuner collectif, douches à la suite, appareils de cuisine en marche, et télévision allumée en fond sonore. Les ordinateurs et consoles tournent dans la matinée, tandis que le lave-vaisselle et la machine à laver sont lancés presque en même temps. Le repas du midi, souvent préparé au four ou sur les plaques, crée un premier pic de consommation vers 12 h 30. L’après-midi, les enfants jouent, certains regardent la télévision, d’autres utilisent des appareils électroniques ; la maison reste très active énergétiquement. En fin de journée, un nouveau pic apparaît vers 19 h avec la préparation du dîner, l’éclairage généralisé et les activités de détente du soir.", "lang": "fr"
+      },
+      {
+        "text": "The Martin family lives in a large 140 m² house in a small suburban town. The two parents and their three children, aged 6, 10, and 15, are spending a weekend at home. No one is working or attending school, and household life is organized around domestic activities and leisure. In the morning, everyone gets up between 8 and 9 a.m.: a shared breakfast, back-to-back showers, kitchen appliances running, and the television on in the background. Computers and game consoles are used during the morning, while the dishwasher and washing machine are started almost at the same time. Lunch, often prepared using the oven or the cooktop, creates a first peak in energy consumption around 12:30 p.m. In the afternoon, the children play; some watch television, others use electronic devices; the house remains highly active in terms of energy use. At the end of the day, a new peak appears around 7 p.m. with dinner preparation, general lighting, and evening leisure activities.", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_stove_1", "et_electric_toothbrush_1", "et_electric_mixer_1", "et_electric_fan", "et_electric_drill_1", "et_speaker_1", "et_lighting_1", "et_sewing_machine_1", "et_heater_1", "et_vacuum_1", "et_computer_1", "et_fridge_1", "et_coffee_maker_1", "et_game_console_1", "et_toaster_1", "et_toaster_oven_1", "et_water_boiler_1", "et_internet_box_1", "et_kettle_1", "et_micro_wave_1", "et_electric_car_1", "et_electric_bike_1", "et_television_1", "et_tumble_dryer_1", "et_washing_machine_1", "et_dishwasher_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_8",
-    "names": [{"text": "Emma", "lang": "fr"}],
+    "names": [
+      { "text": "Télétravail en appartement – consommation étalée", "lang": "fr" },
+      { "text": "Remote worker in an apartment – spread-out consumption", "lang": "en" }
+    ],
     "dayId": "day_tuesday",
     "seasonId": "season_winter",
     "descriptions": [
       {
         "text": "Emma vit dans un appartement de 70 m² en ville. Elle travaille depuis son domicile quatre jours par semaine, dans le domaine du marketing numérique. Sa journée commence vers 7 h 30 avec le petit-déjeuner et la mise en route des appareils de bureautique : ordinateur, écran supplémentaire, éclairage du bureau, box internet, et parfois un petit chauffage d’appoint l’hiver. La consommation énergétique se répartit sur toute la journée, avec un niveau de base plus élevé qu’un foyer classique absent en journée. Les repas du midi sont préparés sur place, le chauffe-eau est sollicité plus souvent et la ventilation ou la climatisation peuvent fonctionner plusieurs heures d’affilée selon la saison. Le soir, le télétravail laisse place aux loisirs numériques : séries, jeux vidéo ou réseaux sociaux, souvent sans réelle baisse de consommation avant 22 h ou 23 h. ", "lang": "fr"
+      },
+      {
+        "text": "Emma lives in a 70 m² apartment in the city. She works from home four days a week in the field of digital marketing. Her day starts around 7:30 a.m. with breakfast and the start-up of office equipment: a computer, an additional monitor, office lighting, an internet router, and sometimes a small space heater in winter. Energy consumption is spread throughout the day, with a higher base load than in a typical household that is empty during daytime hours. Lunch is prepared at home, the water heater is used more frequently, and ventilation or air conditioning may run for several hours at a time depending on the season. In the evening, remote work gives way to digital leisure activities—streaming series, video games, or social media—often with no real drop in energy consumption until 10 or 11 p.m.", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_dishwasher_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_television_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box_1", "et_water_boiler_1", "et_toaster_oven_1", "et_toaster_1", "et_game_console_1", "et_coffee_maker_1", "et_fridge_1", "et_computer_1", "et_vacuum_1", "et_heater_1", "et_lighting_1", "et_wireless_speaker_1", "et_electric_piano_1", "et_electric_fan_1", "et_electric_mixer_1", "et_electric_toothbrush_1", "et_stove_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_9",
-    "names": [{"text": "Claire et Julien", "lang": "fr"}],
+    "names": [
+      { "text": "Famille avec jeunes enfants – consommation élevée continue", "lang": "fr" },
+      { "text": "Family with young children – sustained high consumption", "lang": "en" }
+    ],
     "dayId": "day_tuesday",
     "seasonId": "season_winter",
     "descriptions": [
       {
         "text": "Claire et Julien vivent dans une maison de 150 m² avec leurs trois enfants : un bébé de 6 mois, un jeune enfant de 2 ans et une fille de 7 ans qui va à l’école. Julien travaille à l’extérieur, tandis que Claire reste à la maison pour s’occuper des petits. Les journées sont intenses : chauffage quasi constant pour maintenir une température stable, lessives fréquentes, préparation de plusieurs repas, et usage continu des appareils électroménagers. Le matin, tout le monde se lève tôt : petit-déjeuner, douche, habillage, puis départ de Julien au travail et de la fille aînée à l’école. À la maison, Claire s’occupe du bébé et du jeune enfant : lessives, chauffe-biberons, aspirateur, télévision ou musique pour occuper les petits. Le lave-linge tourne presque quotidiennement, et parfois le sèche-linge, ce qui crée des pics réguliers en milieu de journée. Le repas du midi et les activités de l’après-midi maintiennent la consommation à un niveau élevé. Le soir, retour du reste de la famille, dîner, bains et couchers s’enchaînent, entraînant un nouveau pic majeur vers 19 h–21 h.", "lang": "fr"
+      },
+      {
+        "text": "Claire and Julien live in a 150 m² house with their three children: a 6-month-old baby, a 2-year-old toddler, and a 7-year-old daughter who attends school. Julien works outside the home, while Claire stays at home to take care of the younger children. The days are intense: heating is almost constant to maintain a stable indoor temperature, laundry is done frequently, multiple meals are prepared, and household appliances are used continuously. In the morning, everyone gets up early: breakfast, showers, getting dressed, then Julien leaves for work and the eldest daughter goes to school. At home, Claire looks after the baby and the toddler—doing laundry, warming bottles, vacuuming, and using the television or music to keep the children entertained. The washing machine runs almost daily, and sometimes the tumble dryer as well, creating regular peaks in energy use around midday. Lunch and afternoon activities keep consumption at a high level. In the evening, the rest of the family returns home; dinner, baths, and bedtime routines follow one another, leading to another major peak between 7 p.m. and 9 p.m.","lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_dishwasher_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_television_1", "et_electric_bike", "et_electric_car_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box_1", "et_water_boiler_1", "ete_toaster_oven_1", "et_toaster_1", "et_coffee_maker_1", "et_fridge_1", "et_computer_1", "et_vacuum_1", "et_heater_1", "et_baby_bottle_warmer_1", "et_sewing_machine_1", "et_lighting_1", "et_speaker_1", "et_electric_drill_1", "et_electric_fan_1", "et_electric_mixer_1", "et_electric_toothbrush_1", "et_stove_1", "et_standby_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_10",
-    "names": [{"text": "Claire et Hugo", "lang": "fr"}],
+    "names": [
+      { "text": "Artisans à domicile – activité professionnelle électrique", "lang": "fr" },
+      { "text": "Home-based artisans – electrically intensive activity", "lang": "en" }
+    ],
     "dayId": "day_friday",
     "seasonId": "season_autumn",
     "descriptions": [
       {
         "text": "Claire et Hugo vivent dans une maison de 110 m² à la campagne. Ils ont transformé une pièce du rez-de-chaussée en petit atelier pour leur activité d’artisanat : Claire conçoit des objets décoratifs sur une imprimante 3D et une découpeuse laser ; Hugo assemble et emballe les produits. Leur logement, chauffé à l’électricité, dispose d’un ballon d’eau chaude, d’un four, d’un lave-linge et d’une voiture électrique qu’ils utilisent pour les livraisons locales. Pendant la journée, l’activité professionnelle entraîne une consommation continue et soutenue : machines, ventilation, ordinateur de conception, petit compresseur. Le soir, la maison redevient un foyer classique avec cuisson du dîner, lessive et détente devant la télévision.", "lang": "fr"
+      },
+      {
+        "text": "Claire and Hugo live in a 110 m² house in the countryside. They have converted a room on the ground floor into a small workshop for their craft business: Claire designs decorative items using a 3D printer and a laser cutter, while Hugo assembles and packages the products. Their home, which is heated with electricity, is equipped with a hot water tank, an oven, a washing machine, and an electric car that they use for local deliveries. During the day, their professional activity leads to continuous and sustained energy consumption: machines, ventilation, a design computer, and a small compressor. In the evening, the house returns to a more typical household routine, with dinner preparation, laundry, and relaxation in front of the television. ", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_stove_1", "et_electric_toothbrush_1", "et_electric_mixer_1", "et_electric_fan_1", "et_electric_drill_1", "et_wireless_speaker_1", "et_lighting_1", "et_sewing_machine_1", "et_heater_1", "et_vacuum_1", "et_computer_1", "et_fridge_1", "et_coffee_maker_1", "et_toaster_1", "et_toaster_oven_1", "et_water_boiler_1", "et_internet_box_1", "et_kettle_1", "et_micro_wave_1", "et_electric_car_1", "et_television_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_dishwasher_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_11",
-    "names": [{"text": "Amine", "lang": "fr"}],
+    "names": [
+      { "text": "Travailleur de nuit – rythme de vie inversé", "lang": "fr" },
+      { "text": "Night-shift worker – inverted daily routine", "lang": "en" }
+    ],
     "dayId": "day_monday",
     "seasonId": "season_summer",
     "descriptions": [
       {
         "text": "Amine, infirmier de nuit, vit seul dans un appartement de 60 m². Il quitte son logement vers 20 h pour rejoindre l’hôpital et rentre à 7 h du matin. Son mode de vie est inversé : il cuisine et prend sa douche au lever, vers 14 h, puis se repose jusqu’à 19 h. Durant la nuit, lorsqu’il est absent, seul le frigo et quelques appareils en veille fonctionnent ; mais entre 7 h et 14 h, l’activité est maximale : chauffage, cuisson, lessive, éclairage, ordinateur. ", "lang": "fr"
+      },
+      {
+        "text": "Amine, a night-shift nurse, lives alone in a 60 m² apartment. He leaves his home around 8 p.m. to go to the hospital and returns at 7 a.m. His lifestyle is reversed: he cooks and takes a shower after waking up, around 2 p.m., then rests until 7 p.m. During the night, when he is away, only the refrigerator and a few devices on standby are running; however, between 7 a.m. and 2 p.m., activity is at its peak: heating, cooking, laundry, lighting, and computer use.", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_dishwasher_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_television_1", "et_electric_bike_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box_1", "et_water_boiler_1", "et_toaster_oven_1", "et_toaster_1", "et_game_console_1", "et_coffee_maker_1", "et_fridge_1", "et_computer_1", "et_vacuum_1", "et_heater_1", "et_lighting_1", "et_wireless_speaker_1", "et_speaker_1", "et_electric_guitar_1", "et_electric_fan_1", "et_electric_toothbrush_1", "et_stove_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"
   },
   {
     "id": "scenario_12",
-    "names": [{"text": "Nina et Paul", "lang": "fr"}],
+    "names": [
+      { "text": "Famille bi-active avec deux voitures électriques", "lang": "fr" },
+      { "text": "Dual-income family with two electric cars", "lang": "en" }
+    ],
     "dayId": "day_thursday",
     "seasonId": "season_spring",
     "descriptions": [
       {
         "text": "Nina et Paul habitent une maison de 130 m² avec deux enfants. Tous deux travaillent à des horaires différents : Paul part tôt le matin, Nina rentre tard le soir. Chacun possède une voiture électrique. La journée, la maison est calme, mais les deux véhicules doivent être chargés chaque nuit, et parfois simultanément. Leur foyer possède aussi un ballon d’eau chaude et plusieurs appareils électroménagers. Le soir, tout s’allume : cuisine, TV, lessive, charge des voitures, chauffage. ", "lang": "fr"
+      },
+      {
+        "text": "Nina and Paul live in a 130 m² house with their two children. They both work different schedules: Paul leaves early in the morning, while Nina comes home late in the evening. Each of them owns an electric vehicle. During the day, the house is quiet, but both vehicles need to be charged every night, sometimes at the same time. Their household is also equipped with a hot water tank and several household appliances. In the evening, everything turns on: cooking, television, laundry, vehicle charging, and heating.", "lang": "en"
       }
     ],
     "additionalEquipmentTypesIds": ["et_dishwasher_1", "et_washing_machine_1", "et_tumble_dryer_1", "et_television_1", "et_electric_bike_1", "et_electric_car_1", "et_micro_wave_1", "et_kettle_1", "et_internet_box_1", "et_water_boiler_1", "et_toaster_oven_1", "et_toaster_1", "et_coffee_maker_1", "et_fridge_1", "et_game_console_1", "et_computer_1", "et_vacuum_1", "et_heater_1", "et_lighting_1", "et_wireless_speaker_1", "et_electric_fan_1", "et_electric_toothbrush_1", "et_stove_1"],
-    "initialConsumptionIds": ["ic_dishwasher_0_1"],
+    "initialConsumptionIds": [],
     "energyStorageParametersId": "esp_1",
     "energyMarketParametersId": "emp_1",
     "moneyParametersId": "mp_1"

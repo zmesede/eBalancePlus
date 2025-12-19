@@ -1,88 +1,103 @@
-.overlay{
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: var(--theme-color-background-secondary);
-    z-index: 9;
-    opacity: 0.4;
-}
-.popup-window {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    margin: 0 auto;
-    border-radius: 5px;
-    background-color: var(--theme-color-background);
-    width:700px;
-    text-align: center;
-    .color-banner{
-        width: 100%;
-        height: 10px;
-        border-radius: 5px 5px 0 0;
-    }
-    .card{
-        padding: 0 5px 15px 5px;
-        .btn{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 35px;
-            width: 130px;
-            cursor: pointer;
-            border:none;
-            border-radius: 5px;
-            padding: 3px;
-            font-size: medium;
-            .btn-icon{
-                margin-right: 10px;
-            }
-        }
-        .card-time-modifier{
-            display: flex;
-            justify-content: center;
-            .field{
-                display: flex;
-                align-items: center;
-                color:var(--theme-color-text);
-                .input-error{
-                    border: solid 1px red;
-                }
-                .choice-container{
-                    padding: 5px;
-                    border-radius: 10px;
-                    background-color: var(--theme-color-background);
-                    margin: 0 0 0 10px;
-                    .input{
-                        border: none;
-                    }
-                }
-            }
-            .start-input{
-                margin-right: 10px;
-            }
-            .end-input{
-                margin-left: 10px;
-            }
-        }
-        .card-save-modification{
-            margin: 15px 0 0 0;
-            display: flex;
-            justify-content: center;
-            .btn-save{
-                margin-right: 10px;
-            }
-            .btn-cancel{
-                margin-left: 10px;
-            }
-        }
-    }
+.overlay {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--theme-color-background-secondary);
+  z-index: 9;
+  opacity: 0.4;
 }
 
-.game-page{
+.popup-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--theme-color-background);
+  width: 700px;
+  text-align: center;
+
+  .color-banner {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .card {
+    padding: 0 5px 15px 5px;
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 130px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 3px;
+      font-size: medium;
+
+      .btn-icon {
+        margin-right: 10px;
+      }
+    }
+
+    .card-time-modifier {
+      display: flex;
+      justify-content: center;
+
+      .field {
+        display: flex;
+        align-items: center;
+        color: var(--theme-color-text);
+
+        .input-error {
+          border: solid 1px red;
+        }
+
+        .choice-container {
+          padding: 5px;
+          border-radius: 10px;
+          background-color: var(--theme-color-background);
+          margin: 0 0 0 10px;
+
+          .input {
+            border: none;
+          }
+        }
+      }
+
+      .start-input {
+        margin-right: 10px;
+      }
+
+      .end-input {
+        margin-left: 10px;
+      }
+    }
+
+    .card-save-modification {
+      margin: 15px 0 0 0;
+      display: flex;
+      justify-content: center;
+
+      .btn-save {
+        margin-right: 10px;
+      }
+
+      .btn-cancel {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.game-page {
   position: relative;
   z-index: 1;
 }
@@ -91,5 +106,47 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none; /* très important */
+}
+
+.game-layout {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  --navbar-height: 64px;
+}
+
+.side-list {
+  position: fixed;
+  top: var(--navbar-height);
+  bottom: 0;
+  width: 320px;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.side-list.left {
+  left: 0;
+}
+
+.side-list.right {
+  right: 0;
+}
+
+
+.center-space {
+  margin-left: 320px;
+  margin-right: 320px;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.canvas-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
 }

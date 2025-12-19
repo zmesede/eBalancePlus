@@ -1,89 +1,105 @@
-.nav-bar{
-  position: relative;
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10;
-    display: flex;
-    padding: 10px 20px;
-    background-color: var(--theme-color-background);
-    .nav-bar-logo-links{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        .nav-bar-logo{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            img{
-                width: 250px;
-            }
-        }
-        .nav-bar-links{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-            margin-left: 20px;
-            a{
-                text-decoration: none;
-                color: var(--theme-color-text);
-                font-size: 1.2rem;
-                font-weight: 500;
-                margin: 0 10px;
-                transition: 0.6s;
-                padding: 1px 5px;
-                border: solid 2px transparent;
-                border-radius: 7px;
-                &:hover{
-                    color: var(--theme-color-primary);
-                    border: solid 2px var(--theme-color-primary);
-                }
-            }
-            .router-link-active{
-                color: var(--theme-color-secondary);
-                border: solid 2px var(--theme-color-secondary);
-            }
-        }
+  display: flex;
+  padding: 10px 20px;
+  background-color: var(--theme-color-background);
 
+  .nav-bar-logo-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .nav-bar-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 250px;
+      }
     }
-    .info {
-        position: absolute;
-        right: 8rem;
-        top: 18px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        cursor: pointer;
+
+    .nav-bar-links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: 20px;
+
+      a {
+        text-decoration: none;
         color: var(--theme-color-text);
-    }
-    .locale-changer{
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        .locale-icon{
-            margin-right: 10px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 0 10px;
+        transition: 0.6s;
+        padding: 1px 5px;
+        border: solid 2px transparent;
+        border-radius: 7px;
+
+        &:hover {
+          color: var(--theme-color-primary);
+          border: solid 2px var(--theme-color-primary);
         }
-        select{
-            background-color: transparent;
-            border: none;
-            color: var(--theme-color-text);
-            font-size: 1.2rem;
-            font-weight: 500;
-            outline: none;
-            cursor: pointer;
-            transition: 0.6s;
-            &:hover{
-                color: var(--theme-color-primary);
-            }
-            option{
-                background-color: var(--theme-color-background);
-                color: var(--theme-color-text);
-            }
-        }
+      }
+
+      .router-link-active {
+        color: var(--theme-color-secondary);
+        border: solid 2px var(--theme-color-secondary);
+      }
     }
+
+  }
+
+  .info {
+    position: absolute;
+    right: 8rem;
+    top: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--theme-color-text);
+  }
+
+  .locale-changer {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .locale-icon {
+      margin-right: 10px;
+    }
+
+    select {
+      background-color: transparent;
+      border: none;
+      color: var(--theme-color-text);
+      font-size: 1.2rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition: 0.6s;
+
+      &:hover {
+        color: var(--theme-color-primary);
+      }
+
+      option {
+        background-color: var(--theme-color-background);
+        color: var(--theme-color-text);
+      }
+    }
+  }
 }

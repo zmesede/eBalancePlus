@@ -2,6 +2,7 @@
 import Board from '../components/Board.vue'
 import BaseAlert from '../components/BaseAlert.vue'
 import EquipmentList from '../components/EquipmentList.vue'
+import TaskList from '../components/TaskList.vue'
 import BoardIconsBar from '../components/BoardIconsBar.vue'
 import BoardConsumptionDetails from '../components/BoardConsumptionDetails.vue'
 import BoardConsumptionAddWindow from '../components/BoardConsumptionAddWindow.vue'
@@ -15,10 +16,36 @@ export default {
     Board,
     BoardIconsBar,
     EquipmentList,
+    TaskList,
     BoardConsumptionDetails,
     BoardConsumptionAddWindow,
     EnergyMenuAddEnergyWindow,
     EnergyMenuUseEnergyWindow,
+  },
+  mounted() {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'auto'
+    })
+  },
+  setup() {
+    const boardStore = useBoardStore()
+    const consumptionStore = useConsumptionStore()
+    const taskStore = useTaskStore()
+
+    watch(
+        () => boardStore.board.consumptionTiles.length,
+        () => {
+          taskStore.getTasksByDay
+        }
+    )
+
+    watch(
+        () => consumptionStore.consumptionList.length,
+        () => {
+          console.log('Consommations mises à jour, recalcul des tâches')
+        }
+    )
   },
   data() {
     return {
@@ -32,8 +59,10 @@ export default {
   },
   computed: {
     displayOverlay() {
-      return this.equipmentStore.clickedEquipment || this.boardStore.isTileClicked
-          || this.energyStore.clickedStoreEnergy || this.gameParametersStore.showedInfoOverlay
+      return this.equipmentStore.clickedEquipment
+          || this.boardStore.isTileClicked
+          || this.energyStore.clickedStoreEnergy
+          || this.gameParametersStore.showedInfoOverlay
           || this.resultsStore.getIsConfirmationWindowOpen
     },
   },
@@ -43,9 +72,11 @@ export default {
 <template>
   <div>
     <NavBar/>
+
     <div v-if="displayOverlay" class="overlay"/>
     <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay"/>
     <ResultsMenuConfirmation/>
+
     <div class="canvas-layer">
       <Board
           :board-visual-params="boardStore.board.boardVisualParams"
@@ -57,29 +88,25 @@ export default {
           :production-tiles-list="boardStore.board.productionTiles"
           :production-curve-props="gameParametersStore.getProductionCurve"
       />
+
     </div>
-    <div id="game-page" class="view">
-      <BaseAlert
-          :should-display="consumptionStore.isOverConsumption"
-          alert-class="danger-alert"
-          alert-text="alert.overConsumption"
-      />
+
+    <section class="side-list left">
+      <EquipmentList/>
+    </section>
+    <section class="side-list right">
+      <TaskList/>
+    </section>
+    <div id="game-page" class="view game-layout">
       <BoardConsumptionAddWindow
           v-if="equipmentStore.clickedEquipment"
           :equipment="equipmentStore.clickedEquipment"
       />
-      <!--
-      <BoardIconsBar/>
-      <EnergyMenuAddEnergyWindow v-if="energyStore.clickedStoreEnergy"/>
-      <EnergyMenuUseEnergyWindow v-if="energyStore.clickedConsumeEnergy"/>
-      -->
-      <div class="list-container">
-        <EquipmentList/>
-      </div>
       <BoardConsumptionDetails
           :consumption-tile="boardStore.clickedTile"
           :production-tile="boardStore.clickedProductionTile"
       />
+      <BoardIconsBar/>
     </div>
   </div>
 </template>

@@ -40,15 +40,15 @@ export default {
       canvasId: 'canvas',
       canvas: null as CanvasRenderingContext2D | null,
       canvasWidth: 1440,
-      canvasHeight: 1500,
-      lastPosition: { x: 0, y: 0 } as { x: number; y: number },
+      canvasHeight: 5000,
+      lastPosition: {x: 0, y: 0} as { x: number; y: number },
       productionCurve: null as ProductionCurve | null,
       tiles: [] as Tile[],
       productionTiles: [] as Tile[],
       isDragging: false,
       dragTileIndex: -1,
-      dragOffset: { x: 0, y: 0 } as { x: number; y: number },
-      hoursList: Array.from({ length: 25 }, (_, i) => i),
+      dragOffset: {x: 0, y: 0} as { x: number; y: number },
+      hoursList: Array.from({length: 25}, (_, i) => i),
       dragTileInitialX: 0,
       dragConsumptionInitialStartIndex: 0,
     }
@@ -123,12 +123,9 @@ export default {
         const tile = this.tiles[idx]
         this.isDragging = true
         this.dragTileIndex = idx
-        this.dragOffset = { x: x - tile.x, y: 0 }
+        this.dragOffset = {x: x - tile.x, y: 0}
 
-        // on garde la position de départ du morceau cliqué
         this.dragTileInitialX = tile.x
-
-        // on calcule le start global de TOUTE la conso (toutes les tuiles avec le même id)
         const sameTiles = this.tiles.filter((t: Tile) => t.id === tile.id)
         const minX = Math.min(...sameTiles.map(t => t.x))
         this.dragConsumptionInitialStartIndex = this.pxToIndex(minX)
@@ -141,15 +138,10 @@ export default {
 
       if (this.isDragging && this.dragTileIndex !== -1) {
         const tile = this.tiles[this.dragTileIndex]
-        // nouvelles coordonnées (en gardant l’offset)
         let newX = x - this.dragOffset.x
 
-
-        // (optionnel) contraintes aux bords du canvas
         newX = Math.max(0, Math.min(newX, this.canvasWidth - tile.width))
 
-
-        // (optionnel) aimantation à la grille temps/puissance
         const snapX = this.pxSizeFor15m || 15
 
         tile.x = Math.round(newX / snapX) * snapX
@@ -160,25 +152,17 @@ export default {
     },
     pxToIndex(px: number) {
       const pxPer15min = this.pxSizeFor15m || 15
-      return Math.round(px / pxPer15min) // 1 index = un créneau de 15 min
+      return Math.round(px / pxPer15min)
     },
 
     canvasMouseUp() {
       if (this.isDragging && this.dragTileIndex !== -1) {
         const tile = this.tiles[this.dragTileIndex]
-
-        // déplacement en pixels du morceau cliqué
         const deltaPx = tile.x - this.dragTileInitialX
         const deltaIndex = this.pxToIndex(deltaPx)
-
-        // nouveau start global pour TOUTE la conso
         const newGlobalStartIndex = this.dragConsumptionInitialStartIndex + deltaIndex
-
         const consumptionStore = useConsumptionStore()
-        // on lui laisse gérer la durée
         consumptionStore.moveConsumption(this.tiles[this.dragTileIndex].id, newGlobalStartIndex)
-
-        // reset drag
         this.isDragging = false
         this.dragTileIndex = -1
       }
@@ -220,7 +204,7 @@ export default {
         const ySize = (this.pxSizeFor10W ? this.pxSizeFor10W : 5) * 100
         let y = 0
         for (let i = 0; i < (this.canvasHeight / ySize); i++) {
-          const color = is3kWLineRed && i % 3 === 0 ? 'red' : '#003C73'
+          const color = is3kWLineRed && (i - 1) % 3 === 0 ? 'red' : '#003C73'
           this.drawLine(0, y, this.canvasWidth, y, color, 0.5)
           y = y + ySize
         }
@@ -268,7 +252,7 @@ export default {
       const img = new Image()
       img.src = tile.iconBase64
       img.onload = () => {
-        const iconSize = Math.min(tile.width, tile.height) * 0.6 // taille relative
+        const iconSize = Math.min(tile.width, tile.height) * 0.6
         const x = tile.x + tile.width / 2 - iconSize / 2
         const y = tile.y + tile.height / 2 - iconSize / 2
         this.canvas!.drawImage(img, x, y, iconSize, iconSize)
@@ -281,7 +265,6 @@ export default {
       this.clearCanvas(0, 0, this.canvasWidth, this.canvasHeight)
       this.drawHoursLines(this.boardVisualParams.shouldDisplayHoursLines)
       this.drawKWLines(this.boardVisualParams.shouldDisplayKWLines, this.boardVisualParams.is3kWLineRed,)
-      // tri ici : plus longues d'abord = en bas
       const sortedProduction = [...this.productionTiles].sort((a, b) => b.width - a.width)
       const sortedConsumption = [...this.tiles].sort((a, b) => b.width - a.width)
 
@@ -300,16 +283,16 @@ export default {
         class="canvas-container"
         :style="{ width: canvasWidth + 'px' }"
     >
-    <BaseCanvas
-      :canvas-id="canvasId"
-      :width="canvasWidth"
-      :height="canvasHeight"
-      style="display:block;margin:0;padding:0;"
-      @click="canvasClick"
-      @mousemove="canvasMouseMove"
-      @mousedown="canvasMouseDown"
-      @mouseup="canvasMouseUp"
-    />
+      <BaseCanvas
+          :canvas-id="canvasId"
+          :width="canvasWidth"
+          :height="canvasHeight"
+          style="display:block;margin:0;padding:0;"
+          @click="canvasClick"
+          @mousemove="canvasMouseMove"
+          @mousedown="canvasMouseDown"
+          @mouseup="canvasMouseUp"
+      />
       <div class="hours-labels">
         <div class="hours-labels" :style="{ width: canvasWidth + 'px' }">
   <span

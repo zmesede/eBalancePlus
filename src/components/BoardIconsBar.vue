@@ -11,17 +11,17 @@ import MultiplayerMenuIcon from './MultiplayerMenuIcon.vue'
 
 <template>
   <section id="game-board-snackbar">
-    <MoneyMenuIcon />
-    <MultiplayerMenuIcon />
-    <MarketMenu />
-    <MarketMenuIcon />
-    <EnergyMenu />
-    <EnergyMenuIcon />
-    <SettingsMenuIcon />
-    <ResultsMenuIcon />
+    <!-- <MoneyMenuIcon />
+     <MultiplayerMenuIcon />
+     <MarketMenu />
+     <MarketMenuIcon />
+     <EnergyMenu />
+     <EnergyMenuIcon />
+     <SettingsMenuIcon />-->
+    <ResultsMenuIcon/>
   </section>
 </template>
 
 <style lang="scss">
-    @import '../styles/components/gameBoardSnackBar.scss';
+@import '../styles/components/gameBoardSnackBar.scss';
 </style>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useEquipmentStore } from '../stores/EquipmentStore'
-import { useConsumptionStore } from '../stores/ConsumptionStore'
-import { generateStringId } from '../helpers/idGenerator'
-import { convertI18nObjectToLocale } from '../helpers/translation'
+import {useEquipmentStore} from '../stores/EquipmentStore'
+import {useConsumptionStore} from '../stores/ConsumptionStore'
+import {generateStringId} from '../helpers/idGenerator'
+import {convertI18nObjectToLocale} from '../helpers/translation'
 import CardPopup from './CardPopup.vue'
 </script>
 
@@ -44,9 +44,16 @@ export default {
     closeAddPopup() {
       equipmentStore.clickedEquipment = null
     },
-    saveConsumption(save: { startIndex: number; endIndex: number;amount: number;price: number;startHour: string;endHour: string }) {
+    saveConsumption(save: {
+      startIndex: number;
+      endIndex: number;
+      amount: number;
+      price: number;
+      startHour: string;
+      endHour: string
+    }) {
       consumptionStore.addConsumption(
-        save.startIndex, save.endIndex, this.equipment, save.amount, save.price,
+          save.startIndex, save.endIndex, this.equipment, save.amount, save.price,
       )
       this.moneyStore.withdrawMoney(save.price)
       equipmentStore.clickedEquipment = null
@@ -69,23 +76,23 @@ export default {
 
 <template>
   <CardPopup
-    :id="consumptionId"
-    :type="equipmentType"
-    :props-amount="consumption"
-    :props-max-energy-amount="equipment.equipmentConsumptionParams.maxConsumption"
-    :props-price="price"
-    :equipment="equipment"
-    :indexes="{ start: startIndex, end: endIndex }"
-    :props-is-initial-add-popup="true"
-    @close-popup="closeAddPopup"
-    @save="saveConsumption"
-    @cancel="closeAddPopup"
-    @delete="closeAddPopup"
-    @amount-error="amountError"
-    @time-error="timeError"
+      :id="consumptionId"
+      :type="equipmentType"
+      :props-amount="consumption"
+      :props-max-energy-amount="equipment.equipmentConsumptionParams. maxConsumption"
+      :props-price="price"
+      :equipment="equipment"
+      :indexes="{ start: startIndex, end: endIndex }"
+      :props-is-initial-add-popup="true"
+      @close-popup="closeAddPopup"
+      @save="saveConsumption"
+      @cancel="closeAddPopup"
+      @delete="closeAddPopup"
+      @amount-error="amountError"
+      @time-error="timeError"
   />
 </template>
 
 <style scoped lang="scss">
-    @import "../styles/components/addConsumptionWindows.scss";
+@import "../styles/components/addConsumptionWindows.scss";
 </style>

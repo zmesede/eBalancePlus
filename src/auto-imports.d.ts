@@ -85,6 +85,7 @@ declare global {
   const useRouter: typeof import('vue-router')['useRouter']
   const useScenarioStore: typeof import('./stores/ScenarioStore')['useScenarioStore']
   const useSlots: typeof import('vue')['useSlots']
+  const useTaskStore: typeof import('./stores/taskStore')['useTaskStore']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']

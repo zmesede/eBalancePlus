@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useEnergyStore } from '../stores/EnergyStore'
-import { useConsumptionStore } from '../stores/ConsumptionStore'
-import type { Equipment } from '../types/Equipment'
-import { generateStringId } from '../helpers/idGenerator'
+import {useEnergyStore} from '../stores/EnergyStore'
+import {useConsumptionStore} from '../stores/ConsumptionStore'
+import type {Equipment} from '../types/Equipment'
+import {generateStringId} from '../helpers/idGenerator'
 import CardPopup from './CardPopup.vue'
 </script>
 
@@ -53,7 +53,14 @@ export default {
     closePopup() {
       this.energyStore.clickOnStoreEnergy()
     },
-    saveConsumption(save: { startIndex: number; endIndex: number;amount: number;price: number;startHour: string;endHour: string }) {
+    saveConsumption(save: {
+      startIndex: number;
+      endIndex: number;
+      amount: number;
+      price: number;
+      startHour: string;
+      endHour: string
+    }) {
       this.consumptionStore.addConsumption(save.startIndex, save.endIndex, this.equipment, save.amount, save.price)
       this.energyStore.clickOnStoreEnergy()
     },
@@ -69,19 +76,19 @@ export default {
 
 <template>
   <CardPopup
-    :id="consumptionId"
-    :type="type"
-    :props-amount="amount"
-    :props-max-energy-amount="maxAmount"
-    :props-price="price"
-    :equipment="equipment"
-    :indexes="{ start: startIndex, end: endIndex }"
-    :props-is-initial-add-popup="true"
-    @close-popup="closePopup"
-    @save="saveConsumption"
-    @cancel="closePopup"
-    @delete="closePopup"
-    @amount-error="amountError"
-    @time-error="timeError"
+      :id="consumptionId"
+      :type="type"
+      :props-amount="amount"
+      :props-max-energy-amount="maxAmount"
+      :props-price="price"
+      :equipment="equipment"
+      :indexes="{ start: startIndex, end: endIndex }"
+      :props-is-initial-add-popup="true"
+      @close-popup="closePopup"
+      @save="saveConsumption"
+      @cancel="closePopup"
+      @delete="closePopup"
+      @amount-error="amountError"
+      @time-error="timeError"
   />
 </template>

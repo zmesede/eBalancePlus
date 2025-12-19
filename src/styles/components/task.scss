@@ -1,0 +1,56 @@
+.task-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  background-color: var(--theme-color-background);
+  color: var(--theme-color-text);
+  width: auto;
+  overflow: hidden;
+  min-height: 5vh;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  transition: 0.2s ease-in-out;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  position: relative;
+
+  h1 {
+    margin-right: 1rem;
+  }
+
+  &:hover {
+    background-color: var(--theme-color-primary);
+  }
+}
+
+.task-checkbox {
+  background-color: var(--theme-color-background);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+
+  .checkbox-icon {
+    font-size: 1.5rem;
+    color: var(--theme-color-text);
+  }
+}
+
+.task-icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+
+  .name {
+    text-decoration: line-through;
+  }
+}

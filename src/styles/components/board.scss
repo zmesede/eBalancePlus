@@ -34,6 +34,7 @@
 }
 
 .hour-label {
+
   position: absolute;
   bottom: 0;
   font-size: 12px;
@@ -65,4 +66,16 @@
   width: 14px;
   height: 14px;
   border-radius: 3px;
+}
+
+.legend-color.solar {
+  background-color: #fdd835;
+}
+
+.legend-color.wind {
+  background-color: #26a69a;
+}
+
+.legend-color.total {
+  background-color: #000000;
 }

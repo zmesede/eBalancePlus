@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Equipment } from '../types/Equipment'
+import type {Equipment} from '../types/Equipment'
 </script>
 
 <script lang="ts">
@@ -28,18 +28,18 @@ export default {
 
 <template>
   <div class="equi-container" @click="isClicked(equipment)">
-    <div class="conso-class " :class="equipment.energy_class">
-      {{ equipment.energy_class }}
-    </div>
+    <!-- <div class="conso-class " :class="equipment.energy_class">
+       {{ equipment.energy_class }}
+     </div>-->
     <h1 class="name">
       {{ consumptionDisplay }}
     </h1>
-    <p class="price">
+    <!--<p class="price">
       {{ priceDisplay }}
-    </p>
+    </p>-->
   </div>
 </template>
 
 <style scoped lang="scss">
-    @import "../styles/components/equipments.scss";
+@import "../styles/components/equipments.scss";
 </style>

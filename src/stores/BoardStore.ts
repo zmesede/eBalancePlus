@@ -27,7 +27,7 @@ export const useBoardStore = defineStore({
         return {
             board: {
                 width: 1440,
-                height: 1500,
+                height: 2000,
                 boardVisualParams: {
                     isProductionCurveSmoothed: true,
                     shouldDisplayProductionCurve: true,
@@ -40,7 +40,7 @@ export const useBoardStore = defineStore({
                 productionTiles: [],
             } as Board,
             tileParams: {
-                pxSizeFor10W: 5,
+                pxSizeFor10W: 3,
                 pxSizeFor15min: 15,
             } as TileParams,
             clickedTile: emptyTile as Tile,
@@ -49,11 +49,13 @@ export const useBoardStore = defineStore({
         }
     },
     actions: {
+
         setTilesFromProductionList() {
             const productionCurve: number[] = useGameParametersStore().getProductionCurveTotal
             const addedProductionList = useProductionStore().getAddedProductionListSortedByStartIndex
             this.board.productionTiles = this.generate15MinTilesFromList(addedProductionList, productionCurve)
         },
+
         setTilesFromConsumptionList() {
             const consumptionList = useConsumptionStore().getConsumptionListSortedByStartIndex
             this.board.consumptionTiles = this.generateTilesFromList(consumptionList, null)

@@ -1,85 +1,118 @@
 @import '../utilities/mixins.scss';
 
 .list-equipment {
-	position: fixed;
-	display: flex;
-	height: 90%;
-	flex-direction: column;
-	background-color: var(--theme-color-secondary);
-	border-radius: 15px;
-	margin-left: 0.2rem;
-	overflow-y: auto;
-	@include scrollbar();
-	.icon-container {
-		display: flex;
-		align-items: center;
-		.icon-menu{
-			cursor: pointer;
-			height: 30px;
-			width: 30px;
-			margin-top: 0.3rem;
-			color: var(--theme-color-background);
-		}
-	}
-	.icon-container-extended {
-		justify-content: flex-end;
-		margin-right: 10px;
-	}
-	.icon-container-reduced {
-		justify-content: center;
-	}
-	.type-list-normal {
-		padding: 0.5rem;
-		margin-top: 0.4rem;
-		transition: 0.2s ease-in-out;
-		overflow-y: auto;
-		.boucle {
-			background-color: var(--theme-color-background-secondary);
-			border-radius: 10px;
-			.type-container {
-				display: flex;
-				align-items: center;
-				text-decoration: none;
-				transition: 0.2s ease-in-out;
-				padding: 0.5rem 1rem;
-				margin-bottom: 0.5rem;
-				cursor: pointer;
-				color: var(--theme-color-text);
-				.material-icons {
-					font-size: 2.5rem;
-					transition: 0.2s ease-in-out;
-				}
-				h1 {
-					transition: 0.2s ease-in-out;
-				}
-				&:hover {
-					background-color: var(--theme-color-tertiary);
-					color: var(--theme-color-accent-secondary);
-					border-radius:10px;
-				}
-			}
-			.equipment-container{
-				padding-bottom: 0.2rem;
-				margin-bottom: 0.2rem;
-			}
-		}
+  position: fixed;
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  background-color: var(--theme-color-secondary);
+  border-radius: 15px;
+  margin-left: 0.2rem;
+  overflow-y: auto;
+  @include scrollbar();
 
-	}
-	.type-list-reduce {
-		width: calc(3rem + 20px );
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		margin-top: 0.5rem;
-		transition: 0.2s ease-in-out;
-		overflow-y: auto;
-		.boucle {
-			font-size: 3rem;
-			margin-bottom: 1rem;
-			.icon-type:hover {
-				cursor: pointer;
-			}
-		}
-	}
+  .icon-container {
+    display: flex;
+    align-items: center;
+
+    .icon-menu {
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+      margin-top: 0.3rem;
+      color: var(--theme-color-background);
+    }
+  }
+
+  .icon-container-extended {
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+
+  .icon-container-reduced {
+    justify-content: center;
+  }
+
+  .type-list-normal {
+    padding: 0.5rem;
+    margin-top: 0.4rem;
+    transition: 0.2s ease-in-out;
+    overflow-y: auto;
+
+    .boucle {
+      background-color: var(--theme-color-background-secondary);
+      border-radius: 10px;
+
+      .type-container {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        color: var(--theme-color-text);
+
+        .material-icons {
+          font-size: 2.5rem;
+          transition: 0.2s ease-in-out;
+        }
+
+        h1 {
+          transition: 0.2s ease-in-out;
+        }
+
+        &:hover {
+          background-color: var(--theme-color-tertiary);
+          color: var(--theme-color-accent-secondary);
+          border-radius: 10px;
+        }
+      }
+
+      .equipment-container {
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.2rem;
+      }
+    }
+
+  }
+
+  .type-list-reduce {
+    width: calc(3rem + 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    transition: 0.2s ease-in-out;
+    overflow-y: auto;
+
+    .boucle {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+
+      .icon-type:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.list-task {
+  position: fixed;
+  top: var(--navbar-height);
+  bottom: 1rem;
+  max-height: calc(100vh - var(--navbar-height) - 1rem);
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--theme-color-secondary);
+  border-radius: 15px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

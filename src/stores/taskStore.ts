@@ -17,7 +17,6 @@ export const useTaskStore = defineStore('task', {
     }),
 
     getters: {
-        // Génération des tâches
         getTasksByDay: () => {
             const scenarioStore = useScenarioStore()
             const clickedScenario = scenarioStore.clickedScenario
@@ -36,7 +35,6 @@ export const useTaskStore = defineStore('task', {
             )
         },
 
-        // Getter qui retourne une fonction
         isTaskCompleted() {
             return (taskId: string, equipmentTypeId: string): boolean => {
                 if (this.manuallyCompletedTasks.includes(taskId)) {
@@ -51,7 +49,6 @@ export const useTaskStore = defineStore('task', {
             }
         },
 
-        // Pourcentage d'avancement
         getCompletionProgress(): number {
             const tasks = this.getTasksByDay
             if (tasks.length === 0) return 0
@@ -65,7 +62,6 @@ export const useTaskStore = defineStore('task', {
             return Math.round((completed / tasks.length) * 100)
         },
 
-        // Nombre complété / total
         getCompletedTasksCount(): { completed: number; total: number } {
             const tasks = this.getTasksByDay
             const isCompleted = this.isTaskCompleted

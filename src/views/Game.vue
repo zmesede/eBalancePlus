@@ -65,6 +65,12 @@ export default {
           || this.gameParametersStore.showedInfoOverlay
           || this.resultsStore.getIsConfirmationWindowOpen
     },
+    isScenarioSelected() {
+      const scenarioStore = useScenarioStore()
+      const clickedScenario = scenarioStore.clickedScenario
+
+      return !!clickedScenario && clickedScenario.id !== '0'
+    },
   },
 }
 </script>

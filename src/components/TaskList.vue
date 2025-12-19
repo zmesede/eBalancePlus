@@ -19,8 +19,16 @@ export default {
     }
   },
   computed: {
+
     tasksByDay() {
       return this.taskStore.getTasksByDay
+    },
+
+    isScenarioSelected() {
+      const scenarioStore = useScenarioStore()
+      const clickedScenario = scenarioStore.clickedScenario
+
+      return !!clickedScenario && clickedScenario.id !== '0'
     },
   },
 }
@@ -72,32 +80,4 @@ export default {
 
 <style scoped lang="scss">
 @import "../styles/components/list.scss";
-
-.task-container {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-  @include scrollbar();
-}
-
-.task-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.task-header-icon {
-  font-size: 1.5rem;
-  color: var(--theme-color-text);
-}
-
-.task-header-title {
-  margin: 0;
-  font-weight: bold;
-  color: var(--theme-color-text);
-}
 </style>

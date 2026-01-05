@@ -3,10 +3,11 @@ import {useBoardStore} from '../stores/BoardStore'
 import type {ProductionCurve} from '../types/Production'
 import type {BoardVisualParams, Tile} from '../types/Board'
 import {convertValuesListToPixelsList} from '../helpers/drawInPixels'
-import BaseCanvas from './BaseCanvas.vue'
 </script>
 
 <script lang="ts">
+import BaseCanvas from "./BaseCanvas.vue";
+
 const boardStore = useBoardStore()
 export default {
   name: 'Board',
@@ -106,7 +107,7 @@ export default {
       const clickedProductionTiles = this.productionTiles.filter((tile: Tile) => this.isInsideTile(x, y, tile))
       if (clickedTiles.length)
         boardStore.setClickedTile(clickedTiles[0])
-      else
+      else+
         boardStore.setClickedTile(null)
 
       if (clickedProductionTiles.length)
@@ -299,7 +300,7 @@ export default {
       v-for="hour in hoursList"
       :key="hour"
       class="hour-label"
-      :style="{ left: (hour * (pxSizeFor15m * 4)) + 'px' }"
+      :style="{ left: (hour * (pxSizeFor15m! * 4)) + 'px' }"
   >
     {{ hour === 24 ? '00' : hour.toString().padStart(2, '0') }}h
   </span>

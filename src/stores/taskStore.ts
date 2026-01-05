@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia'
-import {useScenarioStore} from './scenarioStore'
-import {useConsumptionStore} from './consumptionStore'
+import {useScenarioStore} from './ScenarioStore'
+import {useConsumptionStore} from './ConsumptionStore'
 
 interface Task {
     id: string

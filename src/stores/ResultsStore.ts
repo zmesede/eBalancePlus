@@ -26,8 +26,7 @@ export const useResultsStore = defineStore({
       const consumptionListWithoutSoldEnergy = consumptionList.filter(consumption => !listOfSoldEnergy.some(soldEnergy => soldEnergy.id === consumption.id))
       const productionListWithoutBoughtEnergy = totalProductionList.map((production, index) => production - listOfBoughtEnergy.filter(boughtEnergy => boughtEnergy.startIndex <= index && boughtEnergy.endIndex >= index).reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0))
       const overConsumptionMapWithoutBoughtAndSoldEnergy = this.calculateOverConsumptionMap(consumptionListWithoutSoldEnergy, productionListWithoutBoughtEnergy)
-      const totalOverConsumptionWithoutBoughtAndSoldEnergy = Array.from(overConsumptionMapWithoutBoughtAndSoldEnergy.values()).reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-
+        const totalOverConsumptionWithoutBoughtAndSoldEnergy = (Array.from(overConsumptionMapWithoutBoughtAndSoldEnergy.values()) as number[]).reduce<number>((accumulator, currentValue) => accumulator + currentValue, 0)
       const totalSoldEnergy = listOfSoldEnergy.reduce((accumulator, currentValue) => accumulator + (currentValue.amount * ((currentValue.endIndex - currentValue.startIndex) + 1)), 0)
       const totalBoughtEnergy = listOfBoughtEnergy.reduce((accumulator, currentValue) => accumulator + (currentValue.amount * ((currentValue.endIndex - currentValue.startIndex) + 1)), 0)
 
@@ -47,16 +46,25 @@ export const useResultsStore = defineStore({
         selfProductionRatio,
       } as ResultsPerformanceIndicators
     },
-    calculateOverConsumptionMap(consumptionList: Consumption[], productionList: number[]) {
-      const overConsumptionMap = new Map<number, number>()
-      consumptionList.forEach((consumption) => {
-        for (let i = consumption.startIndex; i <= consumption.endIndex; i++) {
-          if (consumption.amount > productionList[i])
-            overConsumptionMap.set(i, (overConsumptionMap.get(i) ?? 0) + (consumption.amount - productionList[i]))
-        }
-      })
-      return overConsumptionMap
-    },
+      calculateOverConsumptionMap(
+          consumptionList: Consumption[],
+          productionList: number[]
+      ): Map<number, number> {
+          const overConsumptionMap = new Map<number, number>()
+
+          consumptionList.forEach((consumption) => {
+              for (let i = consumption.startIndex; i <= consumption.endIndex; i++) {
+                  if (consumption.amount > productionList[i]) {
+                      overConsumptionMap.set(
+                          i,
+                          (overConsumptionMap.get(i) ?? 0) + (consumption.amount - productionList[i])
+                      )
+                  }
+              }
+          })
+
+          return overConsumptionMap
+      },
     setInitialSituationPerformanceIndicators() {
       const consumptionList = useScenarioStore().getInitialConsumptionCopy()
       const totalProductionList = useProductionStore().getTotalProductionCopy()

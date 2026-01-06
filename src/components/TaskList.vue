@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {Icon} from '@iconify/vue'
-import {convertI18nObjectToLocale} from '../helpers/translation'
 import TaskListItem from './TaskListItem.vue'
 </script>
 

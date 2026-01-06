@@ -222,5 +222,33 @@
     "icon_name": "mdi:power-standby",
     "color": "#0E3653",
     "equipmentTypeDurationParamsId": "etdp_24h_editable"
+  },
+  {
+    "id": "et_air_conditioner_1",
+    "names": [{ "text": "Climatiseur", "lang": "fr" }, { "text": "Air conditioner", "lang": "en" }],
+    "icon_name": "mdi:air-conditioner",
+    "color": "#00B4D8",
+    "equipmentTypeDurationParamsId": "etdp_8h_editable"
+  },
+  {
+    "id": "et_3d_printer_1",
+    "names": [{ "text": "Imprimante 3D", "lang": "fr" }, { "text": "3D printer", "lang": "en" }],
+    "icon_name": "mdi:printer-3d",
+    "color": "#6A4C93",
+    "equipmentTypeDurationParamsId": "etdp_4h_editable"
+  },
+  {
+    "id": "et_laser_cutter_1",
+    "names": [{ "text": "Découpeuse laser", "lang": "fr" }, { "text": "Laser cutter", "lang": "en" }],
+    "icon_name": "mdi:laser-pointer",
+    "color": "#D62828",
+    "equipmentTypeDurationParamsId": "etdp_2h_editable"
+  },
+  {
+    "id": "et_hair_dryer_1",
+    "names": [{ "text": "Sèche-cheveux", "lang": "fr" }, { "text": "Hair dryer", "lang": "en" }],
+    "icon_name": "mdi:hair-dryer",
+    "color": "#F4A261",
+    "equipmentTypeDurationParamsId": "etdp_basics"
   }
 ]

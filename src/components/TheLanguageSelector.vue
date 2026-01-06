@@ -27,7 +27,8 @@ export default {
 
 <template>
   <div class="locale-changer">
-    <Icon :icon="getIconForLocale(localeChoice)" class="locale-icon" />
+    <Icon   :icon="getIconForLocale(localeChoice) ?? 'mdi:help-circle'"
+            class="locale-icon"/>
     <select v-model="localeChoice" @change="changeLanguage">
       <option v-for="locale in locales" :key="`locale-${locale.lang}`" :value="locale.lang">
         {{ locale.lang.toLocaleUpperCase() }}

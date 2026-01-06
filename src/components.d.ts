@@ -50,6 +50,8 @@ declare module 'vue' {
     SetupScenarioList: typeof import('./components/SetupScenarioList.vue')['default']
     SetupScenarioResume: typeof import('./components/SetupScenarioResume.vue')['default']
     SetupValidationSection: typeof import('./components/SetupValidationSection.vue')['default']
+    TaskList: typeof import('./components/TaskList.vue')['default']
+    TaskListItem: typeof import('./components/TaskListItem.vue')['default']
     TheGameInfoWindow: typeof import('./components/TheGameInfoWindow.vue')['default']
     TheLanguageSelector: typeof import('./components/TheLanguageSelector.vue')['default']
   }

@@ -1,0 +1,67 @@
+.task-progress {
+  padding: 0.5rem 0.75rem;
+}
+
+.icon-container-extended {
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.icon-container-reduced {
+  justify-content: center;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.task-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.task-progress-bar {
+  height: 6px;
+  background-color: var(--theme-color-background-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.task-progress-fill {
+  height: 100%;
+  background-color: var(--theme-color-primary);
+  transition: width 0.3s ease;
+}
+
+.task-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+
+  @include scrollbar();
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+
+  text-align: center;
+}
+
+.task-header-icon {
+  font-size: 1.5rem;
+  color: var(--theme-color-text);
+}
+
+.task-header-title {
+  margin: 0;
+  font-weight: bold;
+  color: var(--theme-color-text);
+}

@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { useBoardStore } from '../stores/BoardStore'
-import type { ProductionCurve } from '../types/Production'
-import type { BoardVisualParams, Tile } from '../types/Board'
-import { convertValuesListToPixelsList } from '../helpers/drawInPixels'
-import BaseCanvas from './BaseCanvas.vue'
+import {useBoardStore} from '../stores/BoardStore'
+import type {ProductionCurve} from '../types/Production'
+import type {BoardVisualParams, Tile} from '../types/Board'
+import {convertValuesListToPixelsList} from '../helpers/drawInPixels'
 </script>
 
 <script lang="ts">
+import BaseCanvas from "./BaseCanvas.vue";
+
 const boardStore = useBoardStore()
 export default {
   name: 'Board',
@@ -40,15 +41,17 @@ export default {
       canvasId: 'canvas',
       canvas: null as CanvasRenderingContext2D | null,
       canvasWidth: 1440,
-      canvasHeight: 1500,
-      lastPosition: { x: 0, y: 0 } as { x: number; y: number },
+      canvasHeight: 5000,
+      lastPosition: {x: 0, y: 0} as { x: number; y: number },
       productionCurve: null as ProductionCurve | null,
       tiles: [] as Tile[],
       productionTiles: [] as Tile[],
       isDragging: false,
       dragTileIndex: -1,
-      dragOffset: { x: 0, y: 0 } as { x: number; y: number },
-      hoursList: Array.from({ length: 25 }, (_, i) => i),
+      dragOffset: {x: 0, y: 0} as { x: number; y: number },
+      hoursList: Array.from({length: 25}, (_, i) => i),
+      dragTileInitialX: 0,
+      dragConsumptionInitialStartIndex: 0,
     }
   },
   watch: {
@@ -104,7 +107,7 @@ export default {
       const clickedProductionTiles = this.productionTiles.filter((tile: Tile) => this.isInsideTile(x, y, tile))
       if (clickedTiles.length)
         boardStore.setClickedTile(clickedTiles[0])
-      else
+      else+
         boardStore.setClickedTile(null)
 
       if (clickedProductionTiles.length)
@@ -116,56 +119,51 @@ export default {
       const x = event.offsetX
       const y = event.offsetY
       const idx = this.tiles.findIndex((t: Tile) => this.isInsideTile(x, y, t))
+
       if (idx !== -1) {
         const tile = this.tiles[idx]
         this.isDragging = true
         this.dragTileIndex = idx
-        this.dragOffset = { x: x - tile.x, y: y - tile.y }
+        this.dragOffset = {x: x - tile.x, y: 0}
+
+        this.dragTileInitialX = tile.x
+        const sameTiles = this.tiles.filter((t: Tile) => t.id === tile.id)
+        const minX = Math.min(...sameTiles.map(t => t.x))
+        this.dragConsumptionInitialStartIndex = this.pxToIndex(minX)
       }
     },
     canvasMouseMove(event: MouseEvent) {
       const x = event.offsetX
       const y = event.offsetY
-      this.lastPosition = { x, y }
+      this.lastPosition = {x, y}
 
       if (this.isDragging && this.dragTileIndex !== -1) {
         const tile = this.tiles[this.dragTileIndex]
-        // nouvelles coordonnées (en gardant l’offset)
         let newX = x - this.dragOffset.x
-        let newY = y - this.dragOffset.y
 
-        // (optionnel) contraintes aux bords du canvas
         newX = Math.max(0, Math.min(newX, this.canvasWidth - tile.width))
-        newY = Math.max(0, Math.min(newY, this.canvasHeight - tile.height))
 
-        // (optionnel) aimantation à la grille temps/puissance
         const snapX = this.pxSizeFor15m || 15
-        const snapY = (this.pxSizeFor10W || 5) // 10 W par “pas” (à adapter)
+
         tile.x = Math.round(newX / snapX) * snapX
-        tile.y = Math.round(newY / snapY) * snapY
+
 
         this.render()
       }
     },
     pxToIndex(px: number) {
       const pxPer15min = this.pxSizeFor15m || 15
-      return Math.round(px / pxPer15min) // 1 index = un créneau de 15 min
+      return Math.round(px / pxPer15min)
     },
 
     canvasMouseUp() {
       if (this.isDragging && this.dragTileIndex !== -1) {
         const tile = this.tiles[this.dragTileIndex]
-
-        // start / end en INDEX (alignés sur la grille 15 min)
-        const startIndex = Math.max(0, this.pxToIndex(tile.x))
-        const durationIndexes = Math.max(1, this.pxToIndex(tile.width)) // au moins 1 créneau (15 min)
-        const endIndex = Math.min(96 - 1, startIndex + durationIndexes - 1) // 96 créneaux sur 24h
-
-        // Mise à jour du modèle métier (lu par le pop-up)
+        const deltaPx = tile.x - this.dragTileInitialX
+        const deltaIndex = this.pxToIndex(deltaPx)
+        const newGlobalStartIndex = this.dragConsumptionInitialStartIndex + deltaIndex
         const consumptionStore = useConsumptionStore()
-        consumptionStore.modifyConsumptionIndexes(tile.id, startIndex, endIndex)
-
-        // reset drag
+        consumptionStore.moveConsumption(this.tiles[this.dragTileIndex].id, newGlobalStartIndex)
         this.isDragging = false
         this.dragTileIndex = -1
       }
@@ -175,8 +173,10 @@ export default {
         this.canvas.clearRect(startX, startY, endX, endY)
     },
     drawTiles(tiles: Tile[]) {
-      for (const tile of tiles)
+      for (const tile of tiles) {
         this.drawRectangle(tile.x, tile.y, tile.width, tile.height, tile.color)
+        this.drawTileIcon(tile)
+      }
     },
     drawRectangle(x: number, y: number, width: number, height: number, color: string) {
       if (this.canvas) {
@@ -205,8 +205,8 @@ export default {
         const ySize = (this.pxSizeFor10W ? this.pxSizeFor10W : 5) * 100
         let y = 0
         for (let i = 0; i < (this.canvasHeight / ySize); i++) {
-          const color = is3kWLineRed && i % 3 === 0 ? 'red' : '#003C73'
-          this.drawLine(0, y, this.canvasWidth, y, color)
+          const color = is3kWLineRed && (i - 1) % 3 === 0 ? 'red' : '#003C73'
+          this.drawLine(0, y, this.canvasWidth, y, color, 0.5)
           y = y + ySize
         }
       }
@@ -216,7 +216,7 @@ export default {
         const xSize = this.pxSizeFor15m ? this.pxSizeFor15m : 15
         let x = 0
         for (let i = 0; i <= 24; i++) {
-          this.drawLine(x, 0, x, this.canvasHeight, '#003C73')
+          this.drawLine(x, 0, x, this.canvasHeight, '#003C73', 0.5)
           x = x + xSize * 4
         }
       }
@@ -229,8 +229,7 @@ export default {
           this.drawLine(x, this.canvasHeight - points[i], x + xSize, this.canvasHeight - points[i + 1], color)
           x = x + xSize
         }
-      }
-      else {
+      } else {
         for (let i = 0; i < points.length - 1; i++) {
           this.drawLine(x, this.canvasHeight - points[i], x + xSize, this.canvasHeight - points[i], color)
           this.drawLine(x + xSize, this.canvasHeight - points[i], x + xSize, this.canvasHeight - points[i + 1], color)
@@ -239,13 +238,25 @@ export default {
       }
       this.drawLine(x, this.canvasHeight - points[points.length - 1], x + xSize, this.canvasHeight - points[points.length - 1], color)
     },
-    drawLine(startX: number, startY: number, endX: number, endY: number, color: string) {
+    drawLine(startX: number, startY: number, endX: number, endY: number, color: string, linewidth = 3) {
       if (this.canvas) {
         this.canvas.strokeStyle = color
+        this.canvas.lineWidth = linewidth
         this.canvas.beginPath()
         this.canvas.moveTo(startX, startY)
         this.canvas.lineTo(endX, endY)
         this.canvas.stroke()
+      }
+    },
+    drawTileIcon(tile: Tile) {
+      if (!this.canvas || !tile.iconBase64) return
+      const img = new Image()
+      img.src = tile.iconBase64
+      img.onload = () => {
+        const iconSize = Math.min(tile.width, tile.height) * 0.6
+        const x = tile.x + tile.width / 2 - iconSize / 2
+        const y = tile.y + tile.height / 2 - iconSize / 2
+        this.canvas!.drawImage(img, x, y, iconSize, iconSize)
       }
     },
     isInsideTile(x: number, y: number, tile: Tile) {
@@ -254,11 +265,15 @@ export default {
     render() {
       this.clearCanvas(0, 0, this.canvasWidth, this.canvasHeight)
       this.drawHoursLines(this.boardVisualParams.shouldDisplayHoursLines)
-      this.drawKWLines(this.boardVisualParams.shouldDisplayKWLines, this.boardVisualParams.is3kWLineRed)
-      this.drawTiles(this.productionTiles)
-      this.drawTiles(this.tiles)
-      this.drawProductionCurve(this.productionCurve, this.boardVisualParams.isProductionCurveSmoothed, this.boardVisualParams.shouldDisplayProductionCurve)
-    },
+      this.drawKWLines(this.boardVisualParams.shouldDisplayKWLines, this.boardVisualParams.is3kWLineRed,)
+      const sortedProduction = [...this.productionTiles].sort((a, b) => b.width - a.width)
+      const sortedConsumption = [...this.tiles].sort((a, b) => b.width - a.width)
+
+      this.drawTiles(sortedProduction)
+      this.drawTiles(sortedConsumption)
+
+      this.drawProductionCurve(this.productionCurve, this.boardVisualParams.isProductionCurveSmoothed, this.boardVisualParams.shouldDisplayProductionCurve,)
+    }
   },
 }
 </script>
@@ -269,23 +284,23 @@ export default {
         class="canvas-container"
         :style="{ width: canvasWidth + 'px' }"
     >
-    <BaseCanvas
-      :canvas-id="canvasId"
-      :width="canvasWidth"
-      :height="canvasHeight"
-      style="display:block;margin:0;padding:0;"
-      @click="canvasClick"
-      @mousemove="canvasMouseMove"
-      @mousedown="canvasMouseDown"
-      @mouseup="canvasMouseUp"
-    />
+      <BaseCanvas
+          :canvas-id="canvasId"
+          :width="canvasWidth"
+          :height="canvasHeight"
+          style="display:block;margin:0;padding:0;"
+          @click="canvasClick"
+          @mousemove="canvasMouseMove"
+          @mousedown="canvasMouseDown"
+          @mouseup="canvasMouseUp"
+      />
       <div class="hours-labels">
         <div class="hours-labels" :style="{ width: canvasWidth + 'px' }">
   <span
       v-for="hour in hoursList"
       :key="hour"
       class="hour-label"
-      :style="{ left: (hour * (pxSizeFor15m * 4)) + 'px' }"
+      :style="{ left: (hour * (pxSizeFor15m! * 4)) + 'px' }"
   >
     {{ hour === 24 ? '00' : hour.toString().padStart(2, '0') }}h
   </span>
@@ -297,9 +312,6 @@ export default {
         </div>
         <div class="legend-item">
           <span class="legend-color wind"></span> Éolien
-        </div>
-        <div class="legend-item">
-          <span class="legend-color hydro"></span> Hydro
         </div>
         <div class="legend-item">
           <span class="legend-color total"></span> Total

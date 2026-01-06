@@ -4,222 +4,146 @@ import { addTimeAmountToHour, compareTwoHours, removeTimeAmountFromHour } from '
 export default {
   name: 'CardPopupTimeModifier',
   props: {
-    startHour: {
-      type: String,
-      required: true,
-    },
-    endHour: {
-      type: String,
-      required: true,
-    },
-    minDuration: {
-      type: String,
-      required: true,
-    },
-    maxDuration: {
-      type: String,
-      required: true,
-    },
-    stepDuration: {
-      type: String,
-      required: true,
-    },
-    originalDuration: {
-      type: String,
-      required: true,
-    },
-    isDurationLengthEditable: {
-      type: Boolean,
-      required: true,
-    },
-    inputError: {
-      type: Boolean,
-      required: true,
-    },
+    startHour: { type: String, required: true },
+    endHour: { type: String, required: true },
+    minDuration: { type: String, required: true },
+    maxDuration: { type: String, required: true },
+    stepDuration: { type: String, required: true },
+    originalDuration: { type: String, required: true },
+    isDurationLengthEditable: { type: Boolean, required: true },
+    inputError: { type: Boolean, required: true },
   },
   emits: ['start-hour', 'end-hour'],
   data() {
+    const [startH, startM] = this.startHour.split(':')
+    const [endH, endM] = this.endHour.split(':')
+
     return {
-      inputErrorStart: false as boolean,
-      inputErrorEnd: false as boolean,
-      startHourPlus: false as boolean,
-      startHourMinus: false as boolean,
-      endHourPlus: false as boolean,
-      endHourMinus: false as boolean,
+      inputErrorStart: false,
+      inputErrorEnd: false,
+      startHourPlus: false,
+      startHourMinus: false,
+      endHourPlus: false,
+      endHourMinus: false,
+      hours: Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0')),
+      minutes: ['00', '15', '30', '45'],
+      startHourLocal: startH,
+      startMinuteLocal: startM,
+      endHourLocal: endH,
+      endMinuteLocal: endM,
     }
   },
   watch: {
     startHour: {
       handler() {
         this.setTimeModificationParams()
+        const [h, m] = this.startHour.split(':')
+        this.startHourLocal = h
+        this.startMinuteLocal = m
       },
       immediate: true,
     },
     endHour: {
       handler() {
         this.setTimeModificationParams()
+        const [h, m] = this.endHour.split(':')
+        this.endHourLocal = h
+        this.endMinuteLocal = m
       },
       immediate: true,
     },
   },
   methods: {
-    updateStartHour(event: Event) {
-      const newStartHour = (event.target as HTMLInputElement).value
-      if (newStartHour === '' || newStartHour === null) {
-        this.inputErrorStart = true
-      }
-      else if (!this.isStartHourBeforeEndHour(newStartHour, this.endHour)) {
-        this.inputErrorStart = true
-      }
-      else {
-        this.inputErrorStart = false
-        this.inputErrorEnd = false
-        this.$emit('start-hour', newStartHour)
-        this.updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStartHour)
-      }
+    getCombinedTime(hour: string, minute: string) {
+      return `${hour}:${minute}`
     },
-    updateEndHour(event: Event) {
-      const newEndHour = (event.target as HTMLInputElement).value
-      if (newEndHour === '' || newEndHour === null) {
-        this.inputErrorEnd = true
-      }
-      else if (!this.isStartHourBeforeEndHour(this.startHour, newEndHour)) {
-        this.inputErrorEnd = true
-      }
-      else {
-        this.inputErrorEnd = false
-        this.inputErrorStart = false
-        this.$emit('end-hour', newEndHour)
-      }
+    emitStartTimeChange() {
+      const combined = this.getCombinedTime(this.startHourLocal, this.startMinuteLocal)
+      this.inputErrorStart = false
+      this.$emit('start-hour', combined)
+      this.updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(combined)
     },
+    emitEndTimeChange() {
+      const combined = this.getCombinedTime(this.endHourLocal, this.endMinuteLocal)
+      this.inputErrorEnd = false
+      this.$emit('end-hour', combined)
+    },
+
     addStepAmountToStartHour() {
-      if (!this.startHourPlus) {
-        const newStartHour = addTimeAmountToHour(this.startHour, this.stepDuration)
-        this.$emit('start-hour', newStartHour)
-        this.updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStartHour)
-      }
+      const newStart = addTimeAmountToHour(this.startHour, this.stepDuration)
+      this.$emit('start-hour', newStart)
+      this.updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStart)
     },
     addStepAmountToEndHour() {
-      if (!this.endHourPlus) {
-        const newEndHour = addTimeAmountToHour(this.endHour, this.stepDuration)
-        this.$emit('end-hour', newEndHour)
-      }
+      const newEnd = addTimeAmountToHour(this.endHour, this.stepDuration)
+      this.$emit('end-hour', newEnd)
     },
     removeStepAmountFromStartHour() {
-      if (!this.startHourMinus) {
-        const newStartHour = removeTimeAmountFromHour(this.startHour, this.stepDuration)
-        this.$emit('start-hour', newStartHour)
-        this.updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStartHour)
-      }
+      const newStart = removeTimeAmountFromHour(this.startHour, this.stepDuration)
+      this.$emit('start-hour', newStart)
+      this.updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStart)
     },
     removeStepAmountFromEndHour() {
-      if (!this.endHourMinus) {
-        const newEndHour = removeTimeAmountFromHour(this.endHour, this.stepDuration)
-        this.$emit('end-hour', newEndHour)
-      }
+      const newEnd = removeTimeAmountFromHour(this.endHour, this.stepDuration)
+      this.$emit('end-hour', newEnd)
     },
-    updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStartHour: string) {
+
+    updateEndHourIfStartHourChangedAndDurationLengthIsNotEditable(newStart: string) {
       if (!this.isDurationLengthEditable) {
-        const newEndHour = addTimeAmountToHour(newStartHour, this.originalDuration)
-        this.$emit('end-hour', newEndHour)
+        const newEnd = addTimeAmountToHour(newStart, this.originalDuration)
+        this.$emit('end-hour', newEnd)
       }
     },
+
     getStartAndEndHourNumbers() {
-      const startHourSplit = this.startHour.split(':')
-      const startHourNumber = Number.parseInt(startHourSplit[0])
-      const startMinutesNumber = Number.parseInt(startHourSplit[1])
-      const endHourSplit = this.endHour.split(':')
-      const endHourNumber = Number.parseInt(endHourSplit[0])
-      const endMinutesNumber = Number.parseInt(endHourSplit[1])
-      return { startHourNumber, startMinutesNumber, endHourNumber, endMinutesNumber }
+      const [sh, sm] = this.startHour.split(':').map(Number)
+      const [eh, em] = this.endHour.split(':').map(Number)
+      return { sh, sm, eh, em }
     },
-    isStartHourBeforeEndHour(startHour: string, endHour: string) {
-      if (compareTwoHours(addTimeAmountToHour(startHour, this.stepDuration), endHour) === -1)
-        return true
-      else
-        return false
+
+    isStartHourBeforeEndHour(start: string, end: string) {
+      return compareTwoHours(addTimeAmountToHour(start, this.stepDuration), end) === -1
     },
+
     isDurationOverMaxDuration() {
-      const durationNumbers = this.getStartAndEndHourNumbers()
-      const maxDurationSplit = this.maxDuration.split(':')
-      const maxDurationHourNumber = Number.parseInt(maxDurationSplit[0])
-      const maxDurationMinutesNumber = Number.parseInt(maxDurationSplit[1])
-      if (durationNumbers.endHourNumber - durationNumbers.startHourNumber > maxDurationHourNumber) {
-        return true
-      }
-      else if (durationNumbers.endHourNumber - durationNumbers.startHourNumber === maxDurationHourNumber) {
-        if (durationNumbers.endMinutesNumber - durationNumbers.startMinutesNumber > maxDurationMinutesNumber)
-          return true
-      }
-      else {
-        return false
-      }
+      const { sh, sm, eh, em } = this.getStartAndEndHourNumbers()
+      const [mh, mm] = this.maxDuration.split(':').map(Number)
+      if (eh - sh > mh) return true
+      if (eh - sh === mh && em - sm > mm) return true
+      return false
     },
+
     isDurationUnderMinDuration() {
-      const durationNumbers = this.getStartAndEndHourNumbers()
-      const minDurationSplit = this.minDuration.split(':')
-      const minDurationHourNumber = Number.parseInt(minDurationSplit[0])
-      const minDurationMinutesNumber = Number.parseInt(minDurationSplit[1])
-      if (durationNumbers.endHourNumber - durationNumbers.startHourNumber < minDurationHourNumber) {
-        return true
-      }
-      else if (durationNumbers.endHourNumber - durationNumbers.startHourNumber === minDurationHourNumber) {
-        if (durationNumbers.endMinutesNumber - durationNumbers.startMinutesNumber < minDurationMinutesNumber)
-          return true
-      }
-      else {
-        return false
-      }
+      const { sh, sm, eh, em } = this.getStartAndEndHourNumbers()
+      const [mh, mm] = this.minDuration.split(':').map(Number)
+      if (eh - sh < mh) return true
+      if (eh - sh === mh && em - sm < mm) return true
+      return false
     },
+
     setTimeModificationParams() {
       if (this.isStartHourBeforeEndHour(this.startHour, this.endHour)) {
         this.inputErrorStart = false
         this.inputErrorEnd = false
         this.setTimeModificationParamsFromMinMaxDuration()
-      }
-      else {
+      } else {
         this.startHourPlus = true
         this.endHourMinus = true
       }
-      if (this.startHour === '00:00' || this.startHour === '0:0')
-        this.startHourMinus = true
-      else
-        this.startHourMinus = false
-
-      if (this.endHour === '23:45')
-        this.endHourPlus = true
-      else
-        this.endHourPlus = false
-
-      this.setTimeModificationParamsIfDurationLengthIsNotEditable()
     },
-    setTimeModificationParamsIfDurationLengthIsNotEditable() {
-      if (!this.isDurationLengthEditable) {
-        if (addTimeAmountToHour(this.startHour, addTimeAmountToHour(this.originalDuration, this.stepDuration)) === '23:45')
-          this.startHourPlus = true
-        else
-          this.startHourPlus = false
 
-        if (this.startHour === '00:00')
-          this.startHourMinus = true
-        else
-          this.startHourMinus = false
-      }
-    },
     setTimeModificationParamsFromMinMaxDuration() {
       if (this.isDurationOverMaxDuration()) {
         this.startHourPlus = true
         this.endHourMinus = true
-      }
-      else {
+      } else {
         this.startHourPlus = false
         this.endHourMinus = false
       }
       if (this.isDurationUnderMinDuration()) {
         this.startHourMinus = true
         this.endHourPlus = true
-      }
-      else {
+      } else {
         this.startHourMinus = false
         this.endHourPlus = false
       }
@@ -233,64 +157,41 @@ export default {
     <div class="hour-container start-hour-container">
       <p>{{ $t("input.start") }}</p>
       <div class="hour-modifier-container" :class="{ 'input-error': inputError || inputErrorStart }">
-        <button
-          class="btn remove"
-          :class="{ disabled: startHourMinus }"
-          @click="removeStepAmountFromStartHour"
-        >
-          -
-        </button>
-        <div class="input-container">
-          <input
-            id="startHour"
-            type="time"
-            class="input-start input"
-            step="900"
-            :value="startHour"
-            @input="updateStartHour"
-          >
+        <button class="btn remove" :class="{ disabled: startHourMinus }" @click="removeStepAmountFromStartHour">-</button>
+
+        <div class="time-select">
+          <select v-model="startHourLocal" @change="emitStartTimeChange">
+            <option v-for="h in hours" :key="h" :value="h">{{ h }}</option>
+          </select>
+          :
+          <select v-model="startMinuteLocal" @change="emitStartTimeChange">
+            <option v-for="m in minutes" :key="m" :value="m">{{ m }}</option>
+          </select>
         </div>
-        <button
-          class="btn add"
-          :class="{ disabled: startHourPlus }"
-          @click="addStepAmountToStartHour"
-        >
-          +
-        </button>
+
+        <button class="btn add" :class="{ disabled: startHourPlus }" @click="addStepAmountToStartHour">+</button>
       </div>
     </div>
     <div v-if="isDurationLengthEditable" class="hour-container end-hour-container">
       <p>{{ $t("input.end") }}</p>
       <div class="hour-modifier-container" :class="{ 'input-error': inputError || inputErrorEnd }">
-        <button
-          class="btn remove"
-          :class="{ disabled: endHourMinus }"
-          @click="removeStepAmountFromEndHour"
-        >
-          -
-        </button>
-        <div class="input-container">
-          <input
-            id="endHour"
-            type="time"
-            class="input-end input"
-            step="900"
-            :value="endHour"
-            @input="updateEndHour"
-          >
+        <button class="btn remove" :class="{ disabled: endHourMinus }" @click="removeStepAmountFromEndHour">-</button>
+
+        <div class="time-select">
+          <select v-model="endHourLocal" @change="emitEndTimeChange">
+            <option v-for="h in hours" :key="h" :value="h">{{ h }}</option>
+          </select>
+          :
+          <select v-model="endMinuteLocal" @change="emitEndTimeChange">
+            <option v-for="m in minutes" :key="m" :value="m">{{ m }}</option>
+          </select>
         </div>
-        <button
-          class="btn add"
-          :class="{ disabled: endHourPlus }"
-          @click="addStepAmountToEndHour"
-        >
-          +
-        </button>
+        <button class="btn add" :class="{ disabled: endHourPlus }" @click="addStepAmountToEndHour">+</button>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss">
-    @import '../styles/components/cardPopupTimeModifier.scss';
+@import '../styles/components/cardPopupTimeModifier.scss';
 </style>

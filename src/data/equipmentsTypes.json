@@ -251,7 +251,7 @@
         "lang": "en"
       }
     ],
-    "icon_name": "mdi:import MaterialSymbolsComputerOutlineSharp from '~icons/material-symbols/computer-outline-sharp'",
+    "icon_name": "mdi:laptop",
     "color": "#5CE1E6",
     "equipmentTypeDurationParamsId": "etdp_basics"
   },

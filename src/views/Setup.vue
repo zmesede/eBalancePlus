@@ -18,11 +18,12 @@ export default {
   <div id="setup-page" class="view">
     <SetupProductionList />
     <div class="center-container">
+      <SetupValidationSection />
       <div class="details-container">
         <SetupProductionRecap />
         <SetupScenarioResume />
       </div>
-      <SetupValidationSection />
+
     </div>
     <SetupScenarioList />
   </div>

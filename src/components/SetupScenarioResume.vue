@@ -43,7 +43,7 @@ export default {
       <h1 class="name">
         {{ scenarioName }}
       </h1>
-      <div class="meteo-container">
+      <div v-if="scenarioStore.clickedScenario && scenarioStore.clickedScenario.id!='scenario_1'" class="meteo-container">
         <h1 class="day">
           {{ scenarioDay }}
         </h1>

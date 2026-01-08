@@ -55,6 +55,7 @@ export default {
       equipmentStore: useEquipmentStore(),
       energyStore: useEnergyStore(),
       resultsStore: useResultsStore(),
+      scenarioStore: useScenarioStore(),
     }
   },
   computed: {
@@ -82,7 +83,9 @@ export default {
     <div v-if="displayOverlay" class="overlay"/>
     <TheGameInfoWindow v-if="gameParametersStore.showedInfoOverlay"/>
     <ResultsMenuConfirmation/>
-
+    <section class="side-list left">
+      <EquipmentList/>
+    </section>
     <div class="canvas-layer">
       <Board
           :board-visual-params="boardStore.board.boardVisualParams"
@@ -94,13 +97,8 @@ export default {
           :production-tiles-list="boardStore.board.productionTiles"
           :production-curve-props="gameParametersStore.getProductionCurve"
       />
-
     </div>
-
-    <section class="side-list left">
-      <EquipmentList/>
-    </section>
-    <section class="side-list right">
+    <section  v-if="scenarioStore.clickedScenario && scenarioStore.clickedScenario.id!='scenario_1'" class="side-list right">
       <TaskList/>
     </section>
     <div id="game-page" class="view game-layout">

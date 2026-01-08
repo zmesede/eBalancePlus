@@ -37,7 +37,7 @@ export default {
   <section class="list-container">
     <div v-for="scenario in scenarioList" class="boucle" @click="isClicked(scenario)">
       <div class="box-container">
-        <div class="day-container">
+        <div v-if="scenario.id!='scenario_1'"class="day-container">
           <h1>
             {{ convertI18nObject(scenario.day.names) }}
           </h1>

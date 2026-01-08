@@ -26,7 +26,7 @@ export const useBoardStore = defineStore({
     state: () => {
         return {
             board: {
-                width: 1440,
+                width: (window.innerWidth*0.8),
                 height: 2000,
                 boardVisualParams: {
                     isProductionCurveSmoothed: true,
@@ -41,7 +41,7 @@ export const useBoardStore = defineStore({
             } as Board,
             tileParams: {
                 pxSizeFor10W: 3,
-                pxSizeFor15min: 15,
+                pxSizeFor15min: (window.innerWidth*0.8)/(24*4),
             } as TileParams,
             clickedTile: emptyTile as Tile,
             clickedProductionTile: emptyTile as Tile,

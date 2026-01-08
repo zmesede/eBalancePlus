@@ -3,45 +3,46 @@
     height: 100%;
     width: 30vw;
     background-color: var(--theme-color-background);
-    padding: 1rem;
+    padding: 1vw;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius:1vw;
     color: var(--theme-color-text);
     .card-content {
         .name {
-            margin-top: 0.5rem;
-            font-size: larger;
+            margin-top: 0.5vh;
+            font-size: 1.5vw;
             font-weight: bold;
             text-align: center;
         }
         .meteo-container {
             display: flex;
             flex-direction: row;
+            align-items: center;
+          justify-content: center;
             .day {
                 margin-top: 1vh;
-                font-size: larger;
+                font-size: 1.5vw;
                 font-weight: bold;
-                text-align: left;
+                text-align: center;
                 margin-left: 2vw;
             }
             .icon-season {
-                margin-top: 2.3vh;
-                font-size: 45px;
+                margin-top: 1vh;
+                font-size: 1.5vw;
                 margin-left: 0.6vw;
                 margin-right:0.6vw;
             }
 
         }
         .separator {
-            height: 0.1rem;
-            border-radius: 10px;
+            height: 0.1vh;
             background-color: lightgray;
-            margin-top: 0.3rem;
-            margin-bottom: 0.3rem;
+            margin-top: 0.3vh;
+            margin-bottom: 0.3vh;
         }
         .svg-container {
-            margin: 1rem;
+            margin: 0.5vw;
             border-radius: 5px;
             border-style: solid;
             border-color: var(--theme-color-secondary);
@@ -54,20 +55,20 @@
             flex-direction: row;
             margin-bottom: 1rem;
             .icon-type-prod{
-                font-size: 45px;
-                margin-left: 0.6rem;
-                margin-right:0.6rem;
+                font-size: 1.5vw;
+                margin-left: 0.6vw;
+                margin-right:0.6vw;
             }
             .icon-type-equipement {
-                font-size: 45px;
-                margin-left: 0.6rem;
-                margin-right:0.6rem;
+                font-size: 3vw;
+                margin-left: 0.6vw;
+                margin-right:0.6vw;
             }
         }
         .explanation-container {
-            margin-top: 0.5rem;
+            margin-top: 0.5vh;
             p{
-                font-size: large;
+                font-size: 1.1vw;
                 font-weight: 400;
                 text-align: justify;
             }

@@ -36,6 +36,7 @@ export default {
     <p class="description">
       {{ $t("home.createGameDescription") }}
     </p>
+    <!--
     <div class="multiplayer-toggle">
       <BaseToggleSwitch
         :is-checked-prop="multiPlayer"
@@ -44,7 +45,7 @@ export default {
         @change="multiPlayer = $event"
       />
     </div>
-    <div v-if="multiPlayer" class="multiplayer-gameId">
+    <<div v-if="multiPlayer" class="multiplayer-gameId">
       <p class="gameId-label">
         {{ $t("home.gameCode") }} :
       </p>
@@ -59,7 +60,7 @@ export default {
         end-label-key="home.public"
         @change="public = $event"
       />
-    </div>
+    </div>-->
     <div class="btn-container">
       <button class="btn create-game-btn" @click="createGame">
         {{ $t("button.create") }}

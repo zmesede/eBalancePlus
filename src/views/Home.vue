@@ -40,6 +40,6 @@ initializeParameters()
 <template>
   <div id="home-page" class="view">
     <HomeCreateGame />
-    <HomeJoinGame />
+    <!--<HomeJoinGame />-->
   </div>
 </template>

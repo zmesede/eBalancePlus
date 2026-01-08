@@ -53,9 +53,9 @@ export default {
       </div>
       <div class="separator" />
       <div class="icon-container">
-        <div class="icon-type-prod">
-          <!-- TODO Add the icon  -->
-        </div>
+          <div v-for="equipmentType in scenarioStore.getEquipmentTypesFromClickedScenario" class="boucle" :title="convertI18nObjectToLocale(equipmentType.names, gameParametersStore.language)" >
+              <Icon class="icon-type-equipement" :icon="equipmentType.icon_name" :style="{ color: equipmentType.color}"   />
+          </div>
       </div>
       <div class="explanation-container">
         <p>{{ scenarioDescription }}</p>

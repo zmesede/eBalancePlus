@@ -53,18 +53,22 @@
             justify-content: center;
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             margin-bottom: 1rem;
-            .icon-type-prod{
-                font-size: 1.5vw;
-                margin-left: 0.6vw;
-                margin-right:0.6vw;
-            }
-            .icon-type-equipement {
-                font-size: 3vw;
-                margin-left: 0.6vw;
-                margin-right:0.6vw;
-            }
+          font-size: 1.5vw;
+          margin-left: 0.6vw;
+          margin-right:0.6vw;
         }
+      .icon-type-equipement {
+        font-size: 3vw;
+        cursor: pointer;
+        transition: transform 0.15s ease, filter 0.15s ease;
+
+        &:hover {
+          transform: scale(1.15);
+          filter: brightness(1.2);
+        }
+      }
         .explanation-container {
             margin-top: 0.5vh;
             p{

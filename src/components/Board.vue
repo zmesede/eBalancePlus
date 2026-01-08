@@ -201,14 +201,18 @@ export default {
       }
     },
     drawKWLines(displayKWLines: boolean, is3kWLineRed: boolean) {
-      if (displayKWLines) {
-        const ySize = (this.pxSizeFor10W ? this.pxSizeFor10W : 5) * 100
-        let y = 0
-        for (let i = 0; i < (this.canvasHeight / ySize); i++) {
-          const color = is3kWLineRed && (i - 1) % 3 === 0 ? 'red' : '#003C73'
-          this.drawLine(0, y, this.canvasWidth, y, color, 0.5)
-          y = y + ySize
-        }
+      if (!displayKWLines) return
+      const pxPer10W = this.pxSizeFor10W ?? 5
+      const ySize = pxPer10W * 100
+      let y = this.canvasHeight
+      let kwValue = 0
+      while (y >= 0) {
+        const is3kW = kwValue !== 0 && kwValue % 3 === 0
+        const color = is3kW && is3kWLineRed ? 'red' : '#003C73'
+        this.drawLine(0, y, this.canvasWidth, y, color, 0.5)
+        this.drawText(`${kwValue} kW`,4,y - 8,color,'11px Arial')
+        kwValue++
+        y -= ySize
       }
     },
     drawHoursLines(displayHoursLines: boolean) {
@@ -273,6 +277,21 @@ export default {
       this.drawTiles(sortedConsumption)
 
       this.drawProductionCurve(this.productionCurve, this.boardVisualParams.isProductionCurveSmoothed, this.boardVisualParams.shouldDisplayProductionCurve,)
+    },
+    drawText(
+        text: string,
+        x: number,
+        y: number,
+        color = '#003C73',
+        font = '12px Arial'
+    ) {
+      if (!this.canvas) return
+
+      this.canvas.fillStyle = color
+      this.canvas.font = font
+      this.canvas.textAlign = 'left'
+      this.canvas.textBaseline = 'middle'
+      this.canvas.fillText(text, x, y)
     }
   },
 }

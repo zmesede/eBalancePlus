@@ -6,13 +6,12 @@
             flex-direction: row;
         }
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         margin: 1rem 0;
-        .results-situation-display{
-            width: 100%;
-            max-width: 50rem;
+        width: 100vw;
+        .results-situatiaons-container{
+        width: 100%;
         }
-    }
-}
+    }}

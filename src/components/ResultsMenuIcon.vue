@@ -11,14 +11,26 @@ export default {
   data() {
     return {
       resultsStore: useResultsStore(),
+      taskStore: useTaskStore(),
+      scenarioStore: useScenarioStore(),
+      showMissingTasksPopup: false,
     }
   },
   methods: {
     handleClick() {
-      if (this.resultsStore.getIsConfirmationWindowOpen)
-        this.resultsStore.closeResultsConfirmationWindow()
-      else
-        this.resultsStore.openResultsConfirmationWindow()
+      console.log('ALL COMPLETED ?', this.taskStore.areAllTasksCompleted)
+      console.log('COUNT', this.taskStore.getCompletedTasksCount)
+      if (this.taskStore.areAllTasksCompleted) {
+        console.log("show popup results")
+        if (this.resultsStore.getIsConfirmationWindowOpen) {
+          this.resultsStore.closeResultsConfirmationWindow()
+        } else {
+          this.resultsStore.openResultsConfirmationWindow()
+        }
+      } else {
+        console.log("show popup missingtasks")
+        this.showMissingTasksPopup = true
+      }
     },
   },
 }
@@ -32,5 +44,10 @@ export default {
     :has-amount="false"
     :is-displayed="true"
     @click="handleClick"
+  />
+
+  <MissingTasksPopup
+      :is-open="showMissingTasksPopup"
+      @close="showMissingTasksPopup = false"
   />
 </template>

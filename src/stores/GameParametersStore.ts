@@ -32,6 +32,7 @@ export const useGameParametersStore = defineStore({
       } as Player,
       availableMoney: 0,
       showedInfoOverlay: true,
+        showedScenarioInfoOverlay: false,
     }
   },
   actions: {
@@ -96,6 +97,9 @@ export const useGameParametersStore = defineStore({
     showInfoOverlay() {
       this.showedInfoOverlay = !this.showedInfoOverlay
     },
+      showScenarioInfoOverlay() {
+          this.showedScenarioInfoOverlay = !this.showedScenarioInfoOverlay
+      },
   },
   getters: {
     getProductionCurve: state => state.productionCurve,

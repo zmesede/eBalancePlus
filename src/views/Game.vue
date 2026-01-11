@@ -64,6 +64,7 @@ export default {
           || this.boardStore.isTileClicked
           || this.energyStore.clickedStoreEnergy
           || this.gameParametersStore.showedInfoOverlay
+          || this.gameParametersStore.showedScenarioInfoOverlay
           || this.resultsStore.getIsConfirmationWindowOpen
     },
     isScenarioSelected() {

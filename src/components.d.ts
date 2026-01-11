@@ -43,6 +43,8 @@ declare module 'vue' {
     ResultsSituationDisplayIndicatorsRate: typeof import('./components/ResultsSituationDisplayIndicatorsRate.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScenarioInfoMenuIcon: typeof import('./components/ScenarioInfoMenuIcon.vue')['default']
+    ScenarioInfoWindow: typeof import('./components/ScenarioInfoWindow.vue')['default']
     SettingsMenu: typeof import('./components/SettingsMenu.vue')['default']
     SettingsMenuIcon: typeof import('./components/SettingsMenuIcon.vue')['default']
     SetupProductionList: typeof import('./components/SetupProductionList.vue')['default']

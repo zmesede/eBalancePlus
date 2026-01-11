@@ -29,12 +29,6 @@ const gameParameterStore = useGameParametersStore()
         <p class="notification text">
           {{ $t("rule.notification") }}
         </p>
-        <p class="battery text">
-          {{ $t("rule.batteryUsage") }}
-        </p>
-        <p class="market text">
-          {{ $t("rule.marketUsage") }}
-        </p>
         <h1 class="win title">
           {{ $t("rule.howToWin") }}
         </h1>

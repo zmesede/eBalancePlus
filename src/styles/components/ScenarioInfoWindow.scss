@@ -71,3 +71,46 @@
     }
   }
 }
+
+/* Conteneur popup centré + cliquable */
+.scenario-modal {
+  position: fixed;
+  inset: 1rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* IMPORTANT : ne pas bloquer les clics */
+.scenario-modal * {
+  pointer-events: auto;
+}
+.scenario-modal .card {
+  background-color: #ffffff; /* FOND BLANC */
+  border-radius: 8px;
+  overflow: hidden;
+
+  width: min(900px, 100%);
+  max-height: calc(100vh - 2rem);
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.scenario-modal .text {
+  padding: 1rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.scenario-modal .btn-container {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+

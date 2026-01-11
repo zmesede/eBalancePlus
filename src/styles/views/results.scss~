@@ -1,0 +1,17 @@
+@import "../utilities/mixins.scss";
+
+#results-page{
+    .results-situations-container{
+        @include for-desktop-up{
+            flex-direction: row;
+        }
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+        width: 100vw;
+        .results-situatiaons-container{
+        width: 100%;
+        }
+    }}

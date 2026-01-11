@@ -42,6 +42,13 @@
   "alert": {
     "overConsumption": "Votre demande est supérieure à la production !"
   },
+  "report": {
+    "screenshot": "Ajouter une capture",
+    "confirm": "Valider",
+    "signal": "Signaler un bug",
+    "cancel": "Annuler",
+    "description": "Décrivez votre problème"
+  },
   "task": {
     "toDo": "Tâches à réaliser"
   },

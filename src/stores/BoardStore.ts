@@ -127,8 +127,6 @@ export const useBoardStore = defineStore({
         },
         generateTile(consumption: Consumption, startIndex: number, endIndex: number, y: number): Tile {
             const height = convertValueToPixels(consumption.amount, this.tileParams.pxSizeFor10W, 10)
-
-            // Génère le SVG blanc
             const iconBase64 = generateWhiteSvgIcon(consumption.equipment.type.icon_name)
 
             return {
@@ -139,7 +137,7 @@ export const useBoardStore = defineStore({
                 height,
                 color: consumption.equipment.type.color,
                 logo: consumption.equipment.type.icon_name,
-                iconBase64, //  ajout : image encodée en base64
+                iconBase64,
             } as Tile
         },
         removeTileFromBoard(tileId: string) {
@@ -209,5 +207,8 @@ export const useBoardStore = defineStore({
             productionCurve.total = convertValuesListToPixelsList(productionCurve.total, state.tileParams.pxSizeFor10W, 10)
             return productionCurve
         },
+        getConsumptionTiles(state) {
+            return state.board.consumptionTiles
+        }
     },
 })

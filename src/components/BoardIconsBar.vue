@@ -3,9 +3,11 @@
 import ResultsMenuIcon from './ResultsMenuIcon.vue'
 import ScenarioInfoWindow from './ScenarioInfoWindow.vue'
 import ScenarioInfoMenuIcon from './ScenarioInfoMenuIcon.vue'
+import BugReportPopup from './BugReportPopup.vue'
 import { useGameParametersStore } from '../stores/GameParametersStore'
 
 const gameParametersStore = useGameParametersStore()
+
 </script>
 
 <template>

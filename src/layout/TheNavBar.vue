@@ -2,6 +2,7 @@
   import {Icon} from '@iconify/vue'
   import TheLanguageSelector from '../components/TheLanguageSelector.vue'
   import {useGameParametersStore} from '../stores/GameParametersStore'
+  import BugReportPopup from "../components/BugReportPopup.vue";
 </script>
 
 <template>
@@ -24,6 +25,7 @@
         </Router-Link>
       </div>
     </div>
+    <BugReportPopup/>
     <div class="info" @click="useGameParametersStore().showInfoOverlay()">
       <Icon icon="mdi:information"/>
     </div>

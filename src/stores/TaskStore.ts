@@ -66,6 +66,12 @@ export const useTaskStore = defineStore('task', {
                 total: tasks.length,
             }
         },
+        getCompletedTasks(): string[] {
+            const tasks = this.getTasksByDay
+            const isCompleted = this.isTaskCompleted
+            return tasks.filter((task: Task) => isCompleted(task.id, task.equipmentTypeId))
+        },
+
         areAllTasksCompleted(): boolean {
             const { completed, total } = this.getCompletedTasksCount
             return total > 0 && completed === total

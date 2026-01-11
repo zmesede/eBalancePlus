@@ -42,6 +42,13 @@
   "alert": {
     "overConsumption": "Your demand is higher than your production. You will have to buy energy !"
   },
+  "report": {
+    "screenshot": "Add a screenshot",
+    "confirm": "Confirm",
+    "signal": "Report a bug",
+    "cancel": "Cancel",
+    "description": "Describe your problem"
+  },
   "task": {
     "toDo": "Tasks to do"
   },

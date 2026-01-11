@@ -16,6 +16,7 @@ declare module 'vue' {
     BoardConsumptionDetails: typeof import('./components/BoardConsumptionDetails.vue')['default']
     BoardConsumptionDetailsWindow: typeof import('./components/BoardConsumptionDetailsWindow.vue')['default']
     BoardIconsBar: typeof import('./components/BoardIconsBar.vue')['default']
+    BugReportPopup: typeof import('./components/BugReportPopup.vue')['default']
     CardPopup: typeof import('./components/CardPopup.vue')['default']
     CardPopupAmountModifier: typeof import('./components/CardPopupAmountModifier.vue')['default']
     CardPopupContent: typeof import('./components/CardPopupContent.vue')['default']

@@ -33,6 +33,7 @@ export const useGameParametersStore = defineStore({
       availableMoney: 0,
       showedInfoOverlay: true,
         showedScenarioInfoOverlay: false,
+        showedTipsOverlay: false,
     }
   },
   actions: {
@@ -99,6 +100,9 @@ export const useGameParametersStore = defineStore({
     },
       showScenarioInfoOverlay() {
           this.showedScenarioInfoOverlay = !this.showedScenarioInfoOverlay
+      },
+      showTipsOverlay() {
+          this.showedTipsOverlay = !this.showedTipsOverlay
       },
   },
   getters: {

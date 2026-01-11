@@ -3,11 +3,11 @@
 import ResultsMenuIcon from './ResultsMenuIcon.vue'
 import ScenarioInfoWindow from './ScenarioInfoWindow.vue'
 import ScenarioInfoMenuIcon from './ScenarioInfoMenuIcon.vue'
-import BugReportPopup from './BugReportPopup.vue'
+import TipsMenuIcon from './TipsMenuIcon.vue'
+import TipsInfoWindow from './TipsInfoWindow.vue'
 import { useGameParametersStore } from '../stores/GameParametersStore'
 
 const gameParametersStore = useGameParametersStore()
-
 </script>
 
 <template>
@@ -19,9 +19,11 @@ const gameParametersStore = useGameParametersStore()
      <EnergyMenu />
      <EnergyMenuIcon />
      <SettingsMenuIcon />-->
+    <TipsMenuIcon />
     <ScenarioInfoMenuIcon/>
     <ResultsMenuIcon/>
     <ScenarioInfoWindow v-if="gameParametersStore.showedScenarioInfoOverlay" />
+    <TipsInfoWindow v-if="gameParametersStore.showedTipsOverlay" />
   </section>
 </template>
 

@@ -18,15 +18,11 @@ export default {
     }
   },
   computed: {
-
     tasksByDay() {
       return this.taskStore.getTasksByDay
     },
-
     isScenarioSelected() {
-      const scenarioStore = useScenarioStore()
-      const clickedScenario = scenarioStore.clickedScenario
-
+      const clickedScenario = this.scenarioStore.clickedScenario
       return !!clickedScenario && clickedScenario.id !== '0'
     },
   },
@@ -34,19 +30,27 @@ export default {
 </script>
 
 <template>
-  <section class="list-task">
+  <section class="list-task" :class="{ reduced: !listSizeExtended }">
     <div class="list-container">
+      <div class="icon-container icon-container-extended">
+        <Icon
+            v-if="listSizeExtended"
+            icon="mdi:chevron-right"
+            class="icon-menu"
+            @click="listSizeExtended = false"
+        />
+        <Icon
+            v-else
+            icon="mdi:chevron-left"
+            class="icon-menu"
+            @click="listSizeExtended = true"
+        />
+      </div>
       <div v-if="listSizeExtended" class="type-list-normal type">
         <div class="task-header">
-          <Icon
-              icon="mdi:clipboard-check-outline"
-              class="task-header-icon"
-          />
-          <h1 class="task-header-title">
-            {{$t('task.toDo') }}
-          </h1>
+          <Icon icon="mdi:clipboard-check-outline" class="task-header-icon"/>
+          <h1 class="task-header-title">{{ $t('task.toDo') }}</h1>
         </div>
-
         <div class="task-container">
           <TaskListItem
               v-for="task in tasksByDay"
@@ -55,19 +59,30 @@ export default {
           />
         </div>
       </div>
-
-      <div v-else class="type-list-reduce type">
-        <Icon
-            icon="mdi:clipboard-check-outline"
-            class="icon-type"
-            style="color: #4caf50"
-            @click="listSizeExtended = true"
-        />
+      <div v-else class="task-compact-list">
+        <div
+            v-for="task in tasksByDay"
+            :key="task.id"
+            class="task-icon-toggle"
+            :class="{ completed: taskStore.isTaskCompleted(task.id, task.equipmentTypeId) }"
+            @click="taskStore.toggleTaskCompletion(task.id)"
+        >
+          <Icon
+              :icon="task.icon"
+              class="task-icon"
+              :style="{ color: task.color }"
+          />
+          <Icon
+              v-if="taskStore.isTaskCompleted(task.id, task.equipmentTypeId)"
+              icon="mdi:check-circle"
+              class="task-checkmark"
+          />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
-@import "../styles/components/list.scss";
+@import '../styles/components/tasklist.scss';
 </style>

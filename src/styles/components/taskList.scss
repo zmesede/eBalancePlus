@@ -1,19 +1,105 @@
-.task-progress {
-  padding: 0.5rem 0.75rem;
+@import '../utilities/mixins.scss';
+
+.list-task {
+  position: fixed;
+  right: 0;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--theme-color-secondary);
+  border-radius: 15px;
+  margin-right: 1vw;
+  overflow-y: auto;
+  transition: width 0.25s ease;
+  @include scrollbar();
+}
+
+.list-task.reduced {
+  width: 3vw;
+  height: 65vh;
+}
+
+.list-task:not(.reduced) {
+  width: 20vw;
+}
+
+.icon-container {
+  color: white;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
 }
 
 .icon-container-extended {
   justify-content: flex-end;
-  margin-right: 10px;
 }
 
 .icon-container-reduced {
   justify-content: center;
 }
 
-.icon-container {
+.task-header {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.task-header-icon {
+  font-size: 2vw;
+  color: var(--theme-color-text);
+}
+
+.task-header-title {
+  margin: 0;
+  font-weight: bold;
+  color: var(--theme-color-text);
+}
+
+.task-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  @include scrollbar();
+}
+.task-compact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.task-icon-toggle {
+  position: relative;
+  cursor: pointer;
+}
+
+.task-icon {
+  font-size: 1.8vw;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.task-checkmark {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  font-size: 1.4vw;
+  color: var(--theme-color-primary);
+  background-color: var(--theme-color-background);
+  border-radius: 50%;
+}
+
+.checkbox-icon {
+  font-size: 1.8vw;
+  color: var(--theme-color-text);
+}
+
+.task-progress {
+  padding: 0.5rem 0.75rem;
 }
 
 .task-progress-header {
@@ -34,34 +120,4 @@
   height: 100%;
   background-color: var(--theme-color-primary);
   transition: width 0.3s ease;
-}
-
-.task-container {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-
-  @include scrollbar();
-}
-
-.task-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-
-  text-align: center;
-}
-
-.task-header-icon {
-  font-size: 1.5rem;
-  color: var(--theme-color-text);
-}
-
-.task-header-title {
-  margin: 0;
-  font-weight: bold;
-  color: var(--theme-color-text);
 }

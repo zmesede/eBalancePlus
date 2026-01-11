@@ -20,7 +20,7 @@ export default {
     handleClick() {
       console.log('ALL COMPLETED ?', this.taskStore.areAllTasksCompleted)
       console.log('COUNT', this.taskStore.getCompletedTasksCount)
-      if (this.taskStore.areAllTasksCompleted) {
+      if (this.taskStore.areAllTasksCompleted || this.scenarioStore.clickedScenario.id == "scenario_1") {
         console.log("show popup results")
         if (this.resultsStore.getIsConfirmationWindowOpen) {
           this.resultsStore.closeResultsConfirmationWindow()

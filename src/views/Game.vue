@@ -70,7 +70,6 @@ export default {
     isScenarioSelected() {
       const scenarioStore = useScenarioStore()
       const clickedScenario = scenarioStore.clickedScenario
-
       return !!clickedScenario && clickedScenario.id !== '0'
     },
   },

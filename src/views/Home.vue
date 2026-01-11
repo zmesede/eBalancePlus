@@ -7,7 +7,6 @@ import { useScenarioStore } from '../stores/ScenarioStore'
 import { useEnergyStore } from '../stores/EnergyStore'
 import { useBoardStore } from '../stores/BoardStore'
 import HomeCreateGame from '../components/HomeCreateGame.vue'
-import HomeJoinGame from '../components/HomeJoinGame.vue'
 
 const gameParametersStore = useGameParametersStore()
 const consumptionStore = useConsumptionStore()

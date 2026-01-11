@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     handleClick() {
-      // Permet de forcer manuellement la complétion/incomplétion
       this.taskStore.toggleTaskCompletion(this.task.id)
     },
   },
@@ -43,7 +42,6 @@ export default {
           class="checkbox-icon"
       />
     </div>
-
     <Icon
         :icon="task.icon"
         :style="{ color: task.color }"

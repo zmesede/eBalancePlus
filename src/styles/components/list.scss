@@ -130,10 +130,11 @@
   position: fixed;
   display: flex;
   height: 90%;
+  right: 0;
   flex-direction: column;
   background-color: var(--theme-color-secondary);
   border-radius: 15px;
-  margin-left: 0.2rem;
+  margin-right: 0.2rem;
   overflow-y: auto;
   @include scrollbar();
 }

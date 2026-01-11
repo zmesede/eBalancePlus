@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useScenarioStore } from '../stores/ScenarioStore'
-import { useGameParametersStore } from '../stores/GameParametersStore'
+import {computed} from 'vue'
+import {useI18n} from 'vue-i18n'
+import {useScenarioStore} from '../stores/ScenarioStore'
+import {useGameParametersStore} from '../stores/GameParametersStore'
 
-const { locale } = useI18n()
+const {locale} = useI18n()
 const scenarioStore = useScenarioStore()
 const gameParametersStore = useGameParametersStore()
 
@@ -44,24 +44,17 @@ function close() {
 
 <template>
   <Teleport to="body">
-    <!-- Backdrop : clique dessus = ferme -->
     <div class="scenario-modal-backdrop" @click="close"></div>
-
-    <!-- Fenêtre : au-dessus du backdrop -->
     <div class="scenario-modal popup-window">
       <div class="card" @click.stop>
-        <div class="color-banner" style="background-color: #00737D;" />
-
+        <div class="color-banner" style="background-color: #00737D;"/>
         <div class="text">
           <h1 class="title">{{ locale.startsWith('fr') ? 'Infos de la partie' : 'Game info' }}</h1>
-
           <h1 class="title">{{ locale.startsWith('fr') ? 'Scénario' : 'Scenario' }}</h1>
           <h3 class="text">{{ scenarioName }} : {{ scenarioDescription }}</h3>
-
           <h1 class="title">{{ locale.startsWith('fr') ? 'Courbe de production' : 'Production curve' }}</h1>
           <h3 class="text">{{ productionCurveName }}</h3>
         </div>
-
         <div class="btn-container">
           <button class="btn-close" type="button" @click="close">
             {{ locale.startsWith('fr') ? 'Fermer' : 'Close' }}

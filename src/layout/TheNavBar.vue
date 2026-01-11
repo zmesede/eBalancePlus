@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import TheLanguageSelector from '../components/TheLanguageSelector.vue'
-import { useGameParametersStore } from '../stores/GameParametersStore'
+  import {Icon} from '@iconify/vue'
+  import TheLanguageSelector from '../components/TheLanguageSelector.vue'
+  import {useGameParametersStore} from '../stores/GameParametersStore'
 </script>
 
 <template>
   <div class="nav-bar">
     <div class="nav-bar-logo-links">
       <div class="nav-bar-logo">
-        <img src="/logo-nav-ebalance-game.png" alt="Logo of the game">
+        <a href="https://ebalanceplus.eu">
+          <img src="/logo-nav-ebalance-game.png" alt="Logo of the game">
+        </a>
       </div>
       <div class="nav-bar-links">
         <Router-link to="/">
@@ -23,13 +25,13 @@ import { useGameParametersStore } from '../stores/GameParametersStore'
       </div>
     </div>
     <div class="info" @click="useGameParametersStore().showInfoOverlay()">
-      <Icon icon="mdi:information" />
+      <Icon icon="mdi:information"/>
     </div>
-    <TheLanguageSelector />
-    <div class="nav-bar-user" />
+    <TheLanguageSelector/>
+    <div class="nav-bar-user"/>
   </div>
 </template>
 
 <style lang="scss">
-    @import '../styles/layout/navigation.scss';
+  @import '../styles/layout/navigation.scss';
 </style>

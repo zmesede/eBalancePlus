@@ -29,7 +29,8 @@
     "total": "Total",
     "close": "Fermer",
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "ok": "Compris"
   },
   "input": {
     "start": "Début",
@@ -40,6 +41,9 @@
   },
   "alert": {
     "overConsumption": "Votre demande est supérieure à la production !"
+  },
+  "task": {
+    "toDo": "Tâches à réaliser"
   },
   "error": {
     "consumptionAmountHigherThanMax": "Votre consommation est supérieure au maximum autorisé.",
@@ -99,6 +103,7 @@
   },
   "results": {
     "confirmSeeResults": "Voulez-vous voir les résultats ?",
+    "missingTasks": "Il vous reste des tâches à réaliser. Placez les tuiles correspondantes ou cochez manuellement ces tâches.",
     "situations": {
       "initialSituation": {
         "name": "Situation initiale",

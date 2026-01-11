@@ -283,7 +283,7 @@
         "lang": "en"
       }
     ],
-    "icon_name": "material-symbols:water-heater",
+    "icon_name": "mdi:radiator",
     "color": "#9C8C5A",
     "equipmentTypeDurationParamsId": "etdp_basics"
   },

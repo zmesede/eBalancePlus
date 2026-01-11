@@ -33,6 +33,8 @@ declare module 'vue' {
     HomeJoinGame: typeof import('./components/HomeJoinGame.vue')['default']
     MarketMenu: typeof import('./components/MarketMenu.vue')['default']
     MarketMenuIcon: typeof import('./components/MarketMenuIcon.vue')['default']
+    MissingTaskPopup: typeof import('./components/MissingTaskPopup.vue')['default']
+    MissingTasksPopup: typeof import('./components/MissingTasksPopup.vue')['default']
     MoneyMenuIcon: typeof import('./components/MoneyMenuIcon.vue')['default']
     MultiplayerMenuIcon: typeof import('./components/MultiplayerMenuIcon.vue')['default']
     ResultsMenuConfirmation: typeof import('./components/ResultsMenuConfirmation.vue')['default']

@@ -36,11 +36,6 @@ export default {
 <template>
   <section class="list-task">
     <div class="list-container">
-      <!--<div class="icon-container" :class="listSizeExtended ? 'icon-container-extended' : 'icon-container-reduced'">
-        <Icon v-if="listSizeExtended" icon="mdi:arrow-left" class="icon-menu" @click="listSizeExtended = false"/>
-        <Icon v-else icon="mdi:arrow-right" class="icon-menu" @click="listSizeExtended = true"/>
-      </div>-->
-
       <div v-if="listSizeExtended" class="type-list-normal type">
         <div class="task-header">
           <Icon
@@ -48,11 +43,7 @@ export default {
               class="task-header-icon"
           />
           <h1 class="task-header-title">
-            {{
-              gameParametersStore.language === 'fr'
-                  ? 'Tâches à réaliser'
-                  : 'Tasks to do'
-            }}
+            {{$t('task.toDo') }}
           </h1>
         </div>
 

@@ -52,28 +52,23 @@ export const useTaskStore = defineStore('task', {
         getCompletionProgress(): number {
             const tasks = this.getTasksByDay
             if (tasks.length === 0) return 0
-
             const isCompleted = this.isTaskCompleted
-
-            const completed = tasks.filter((task: Task) =>
-                isCompleted(task.id, task.equipmentTypeId)
-            ).length
-
+            const completed = tasks.filter((task: Task) => isCompleted(task.id, task.equipmentTypeId)).length
             return Math.round((completed / tasks.length) * 100)
         },
 
         getCompletedTasksCount(): { completed: number; total: number } {
             const tasks = this.getTasksByDay
             const isCompleted = this.isTaskCompleted
-
-            const completed = tasks.filter((task: Task) =>
-                isCompleted(task.id, task.equipmentTypeId)
-            ).length
-
+            const completed = tasks.filter((task: Task) => isCompleted(task.id, task.equipmentTypeId)).length
             return {
                 completed,
                 total: tasks.length,
             }
+        },
+        areAllTasksCompleted(): boolean {
+            const { completed, total } = this.getCompletedTasksCount
+            return total > 0 && completed === total
         },
     },
 

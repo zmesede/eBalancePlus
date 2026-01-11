@@ -29,7 +29,8 @@
     "total": "Total",
     "close": "Close",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "ok": "OK"
   },
   "input": {
     "start": "Start",
@@ -40,6 +41,9 @@
   },
   "alert": {
     "overConsumption": "Your demand is higher than your production. You will have to buy energy !"
+  },
+  "task": {
+    "toDo": "Tasks to do"
   },
   "error": {
     "consumptionAmountHigherThanMax": "Your consumption amount is higher than the max consumption",
@@ -100,6 +104,7 @@
   },
   "results": {
     "confirmSeeResults": "Do you want to see the results ?",
+    "missingTask": "Some tasks are missing. Complete the tasks or check them manually to continue.",
     "situations": {
       "initialSituation": {
         "name": "Initial situation",

@@ -57,5 +57,7 @@ declare module 'vue' {
     TaskListItem: typeof import('./components/TaskListItem.vue')['default']
     TheGameInfoWindow: typeof import('./components/TheGameInfoWindow.vue')['default']
     TheLanguageSelector: typeof import('./components/TheLanguageSelector.vue')['default']
+    TipsInfoWindow: typeof import('./components/TipsInfoWindow.vue')['default']
+    TipsMenuIcon: typeof import('./components/TipsMenuIcon.vue')['default']
   }
 }

@@ -1,70 +1,127 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useScenarioStore } from '../stores/ScenarioStore'
-import { useGameParametersStore } from '../stores/GameParametersStore'
+import { Icon } from '@iconify/vue'
+import { convertI18nObjectToLocale } from '../helpers/translation'
+import type { I18nObject } from '../types/I18nObject'
+</script>
 
-const { locale } = useI18n()
-const scenarioStore = useScenarioStore()
-const gameParametersStore = useGameParametersStore()
+<script lang="ts">
+export default {
+  name: 'ScenarioInfoWindow',
+  components: {
+    Icon,
+  },
+  data() {
+    return {
+      scenarioStore: useScenarioStore(),
+      gameParametersStore: useGameParametersStore(),
+    }
+  },
+  computed: {
+    language() {
+      return this.gameParametersStore.language
+    },
 
-function getLocalizedText(entries: any[], fallback = '—') {
-  if (!Array.isArray(entries)) return fallback
-  const lang = locale.value.slice(0, 2)
-  return (
-      entries.find(e => e.lang === lang)?.text ||
-      entries.find(e => e.lang === 'fr')?.text ||
-      entries[0]?.text ||
-      fallback
-  )
-}
+    scenario() {
+      return this.scenarioStore.clickedScenario
+    },
 
-const scenarioName = computed(() => {
-  const s: any = scenarioStore.clickedScenario
-  if (!s || s.id === '0') return locale.value.startsWith('fr') ? 'Aucun scénario sélectionné' : 'No scenario selected'
-  return getLocalizedText(s.names)
-})
+    productionCurve() {
+      return this.gameParametersStore.getProductionCurve
+    },
 
-const scenarioDescription = computed(() => {
-  const s: any = scenarioStore.clickedScenario
-  if (!s || s.id === '0') return locale.value.startsWith('fr') ? 'Aucun scénario sélectionné' : 'No scenario selected'
-  return getLocalizedText(s.descriptions)
-})
+    titleGameInfo() {
+      return this.language === 'fr'
+          ? 'Infos de la partie'
+          : 'Game info'
+    },
 
-const productionCurveName = computed(() => {
-  const c: any = gameParametersStore.getProductionCurve
-  if (!c) return locale.value.startsWith('fr') ? 'Non définie' : 'Not defined'
-  return getLocalizedText(c.names)
-})
+    titleScenario() {
+      return this.language === 'fr'
+          ? 'Scénario'
+          : 'Scenario'
+    },
 
-function close() {
-  gameParametersStore.showScenarioInfoOverlay()
+    titleProductionCurve() {
+      return this.language === 'fr'
+          ? 'Courbe de production'
+          : 'Production curve'
+    },
+
+    closeLabel() {
+      return this.language === 'fr'
+          ? 'Fermer'
+          : 'Close'
+    },
+
+    scenarioName() {
+      if (!this.scenario || this.scenario.id === '0')
+        return this.language === 'fr'
+            ? 'Aucun scénario sélectionné'
+            : 'No scenario selected'
+
+      return this.convertI18nObject(this.scenario.names)
+    },
+
+    scenarioDescription() {
+      if (!this.scenario || this.scenario.id === '0')
+        return ''
+
+      return this.convertI18nObject(this.scenario.descriptions)
+    },
+
+    productionCurveName() {
+      if (!this.productionCurve)
+        return this.language === 'fr'
+            ? 'Non définie'
+            : 'Not defined'
+
+      return this.convertI18nObject(this.productionCurve.names)
+    },
+  },
+  methods: {
+    convertI18nObject(objList: I18nObject[]) {
+      return convertI18nObjectToLocale(
+          objList,
+          this.gameParametersStore.language
+      )
+    },
+
+    close() {
+      this.gameParametersStore.showScenarioInfoOverlay()
+    },
+  },
 }
 </script>
 
 <template>
   <Teleport to="body">
-    <!-- Backdrop : clique dessus = ferme -->
+    <!-- Backdrop -->
     <div class="scenario-modal-backdrop" @click="close"></div>
 
-    <!-- Fenêtre : au-dessus du backdrop -->
+    <!-- Popup -->
     <div class="scenario-modal popup-window">
       <div class="card" @click.stop>
         <div class="color-banner" style="background-color: #00737D;" />
 
         <div class="text">
-          <h1 class="title">{{ locale.startsWith('fr') ? 'Infos de la partie' : 'Game info' }}</h1>
+          <h1 class="title">{{ titleGameInfo }}</h1>
 
-          <h1 class="title">{{ locale.startsWith('fr') ? 'Scénario' : 'Scenario' }}</h1>
-          <h3 class="text">{{ scenarioName }} : {{ scenarioDescription }}</h3>
+          <h1 class="title">{{ titleScenario }}</h1>
+          <h3 class="text">
+            <strong>{{ scenarioName }}</strong>
+            <span v-if="scenarioDescription">
+              : {{ scenarioDescription }}
+            </span>
+          </h3>
 
-          <h1 class="title">{{ locale.startsWith('fr') ? 'Courbe de production' : 'Production curve' }}</h1>
+          <h1 class="title">{{ titleProductionCurve }}</h1>
           <h3 class="text">{{ productionCurveName }}</h3>
         </div>
 
         <div class="btn-container">
           <button class="btn-close" type="button" @click="close">
-            {{ locale.startsWith('fr') ? 'Fermer' : 'Close' }}
+            <Icon icon="mdi:close" class="btn-icon" />
+            <p>{{ closeLabel }}</p>
           </button>
         </div>
       </div>

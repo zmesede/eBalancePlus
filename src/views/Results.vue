@@ -19,12 +19,12 @@ export default {
 <template>
   <div id="results-page" class="view">
     <div class="results-situations-container">
-      <ResultsSituationDisplay
+    <!--  <ResultsSituationDisplay
         situation-name-i18n-key="results.situations.initialSituation.name"
         situation-description-i18n-key="results.situations.initialSituation.description"
         :is-initial-situation="true"
         :performance-indicators="resultsStore.getInitialSituationPerformanceIndicators"
-      />
+      />-->
       <ResultsSituationDisplay
         situation-name-i18n-key="results.situations.finalSituation.name"
         situation-description-i18n-key="results.situations.finalSituation.description"

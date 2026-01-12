@@ -49,7 +49,7 @@ export default {
         :is-initial-value="isInitialSituation"
         :initial-value="initialPerformanceIndicators.totalOverConsumption"
       />
-      <ResultsSituationDisplayIndicatorsIndicator
+     <!-- <ResultsSituationDisplayIndicatorsIndicator
         indicator-name-i18n-key="results.performanceIndicators.totalSoldEnergy"
         :indicator-value="performanceIndicators.totalSoldEnergy"
         :is-initial-value="isInitialSituation"
@@ -61,7 +61,7 @@ export default {
         :is-initial-value="isInitialSituation"
         :initial-value="initialPerformanceIndicators.totalStoredEnergy"
         :reverse-color-indicators="true"
-      />
+      />-->
     </div>
     <div class="line" />
     <div class="indicators-section">
@@ -74,7 +74,7 @@ export default {
         :is-initial-value="isInitialSituation"
         :initial-value="initialPerformanceIndicators.totalProduction"
       />
-      <ResultsSituationDisplayIndicatorsIndicator
+      <!--<ResultsSituationDisplayIndicatorsIndicator
         indicator-name-i18n-key="results.performanceIndicators.totalBoughtEnergy"
         :indicator-value="performanceIndicators.totalBoughtEnergy"
         :is-initial-value="isInitialSituation"
@@ -86,7 +86,7 @@ export default {
         :is-initial-value="isInitialSituation"
         :initial-value="initialPerformanceIndicators.totalUsedStoredEnergy"
         :reverse-color-indicators="true"
-      />
+      />-->
     </div>
     <div class="line" />
     <div class="indicators-section">
@@ -97,10 +97,10 @@ export default {
         ratio-name-i18n-key="results.performanceIndicators.ratios.selfConsumptionRatio"
         :ratio-value="performanceIndicators.selfConsumptionRatio"
       />
-      <ResultsSituationDisplayIndicatorsRate
+     <!-- <ResultsSituationDisplayIndicatorsRate
         ratio-name-i18n-key="results.performanceIndicators.ratios.selfProductionRatio"
         :ratio-value="performanceIndicators.selfProductionRatio"
-      />
+      />-->
     </div>
   </div>
 </template>

@@ -1,15 +1,4 @@
-class Tile {
-    id: string;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    color: string
-    logo?: string | undefined;
-    iconBase64?: string | undefined;
-}
-
-
+import { Tile } from "./Board";
 
 export interface BugReport {
     id: number;

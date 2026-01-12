@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import {createBugReport} from '../report/BugReport'
+import {createBugReport} from '../service/BugReport'
 import html2canvas from 'html2canvas'
 
 

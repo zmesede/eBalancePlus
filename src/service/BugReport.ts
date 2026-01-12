@@ -2,6 +2,7 @@ import type { BugReport } from '../types/BugReport'
 import { useScenarioStore } from '../stores/ScenarioStore'
 import { useTaskStore } from '../stores/TaskStore'
 import { useBoardStore } from '../stores/BoardStore'
+import {useProductionStore} from '../stores/ProductionStore'
 
 let bugReportId = 1
 

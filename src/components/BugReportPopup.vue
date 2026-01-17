@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import {createBugReport} from '../service/BugReport'
+import {createAndSendBugReport} from '../services/BugReport'
 import html2canvas from 'html2canvas'
 
 
@@ -34,29 +34,38 @@ function close() {
   console.log('close')
 }
 
-function submit() {
+async function submit() {
   if (!description.value.trim()) return
-  createBugReport(description.value.trim(), screenshot.value ?? undefined)
-  screenshot.value = null
-  close()
+
+  try {
+    await createAndSendBugReport(
+        description.value.trim(),
+        screenshot.value ?? undefined
+    )
+
+    screenshot.value = null
+    close()
+  } catch (err) {
+    console.error('Failed to send bug report', err)
+  }
 }
 </script>
 
 <template>
   <button class="bug-report-button" @click="open">
-     {{$t('report.signal')}}
+    {{ $t('report.signal') }}
   </button>
   <div v-if="isOpen" class="bug-popup-backdrop" @click.self="close">
     <div class="bug-popup">
-      <h2> {{$t('report.signal')}}</h2>
+      <h2> {{ $t('report.signal') }}</h2>
       <textarea
           v-model="description"
-      />{{$t('report.description')}}
+      />{{ $t('report.description') }}
       <div class="actions">
         <button @click="takeScreenshot" :disabled="isCapturing">
           {{ isCapturing ? 'Capture…' : $t('report.screenshot') }}
         </button>
-        <button @click="close">{{$t('report.cancel')}}</button>
+        <button @click="close">{{ $t('report.cancel') }}</button>
         <button @click="submit">{{ $t('report.confirm') }}</button>
       </div>
       <img

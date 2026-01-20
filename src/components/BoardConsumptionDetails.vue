@@ -111,5 +111,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/boardConsumptionDetails.scss';
+    @use '../styles/components/boardConsumptionDetails.scss'as *;
 </style>

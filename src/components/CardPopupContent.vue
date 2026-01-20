@@ -91,5 +91,5 @@ interface Times {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/cardPopupContent.scss';
+    @use '../styles/components/cardPopupContent.scss' as *;
 </style>

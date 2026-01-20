@@ -48,5 +48,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/alert.scss';
+    @use '../styles/components/alert.scss' as *;
 </style>

@@ -56,5 +56,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/baseToggleSwitch.scss';
+    @use '../styles/components/baseToggleSwitch.scss'as *;
 </style>

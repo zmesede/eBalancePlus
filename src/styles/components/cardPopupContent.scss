@@ -1,4 +1,4 @@
-@import '../utilities/mixins.scss';
+@use '../utilities/mixins.scss' as *;
 .card-content{
     margin: 15px 0 15px 0;
     h2{

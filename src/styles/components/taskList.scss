@@ -1,4 +1,4 @@
-@import '../utilities/mixins.scss';
+@use '../utilities/mixins.scss' as *;
 
 .list-task {
   position: fixed;

@@ -28,5 +28,5 @@ const gameParametersStore = useGameParametersStore()
 </template>
 
 <style lang="scss">
-@import '../styles/components/gameBoardSnackBar.scss';
+@use '../styles/components/gameBoardSnackBar.scss'as *;
 </style>

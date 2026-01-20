@@ -56,5 +56,5 @@ export default {
 
 
 <style scoped lang="scss">
-@import "../styles/components/task.scss";
+@use "../styles/components/task.scss"as *;
 </style>

@@ -68,5 +68,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "../styles/components/list.scss";
+@use "../styles/components/list.scss" as *;
 </style>

@@ -341,5 +341,5 @@ export default {
 </template>
 
 <style lang="scss">
-@import '../styles/components/board.scss';
+@use '../styles/components/board.scss'as *;
 </style>

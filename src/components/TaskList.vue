@@ -84,5 +84,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import '../styles/components/tasklist.scss';
+@use '../styles/components/taskList.scss' as *;
 </style>

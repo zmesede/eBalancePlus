@@ -47,5 +47,5 @@ const gameParameterStore = useGameParametersStore()
 </template>
 
 <style scoped lang="scss">
-    @import '../styles/components/theGameInfoWindow.scss';
+    @use '../styles/components/theGameInfoWindow.scss'as *;
 </style>

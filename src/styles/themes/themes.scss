@@ -1,5 +1,5 @@
-@import '../utilities/variables.scss';
-@import '../utilities/mixins.scss';
+@use '../utilities/variables.scss' as *;
+@use '../utilities/mixins.scss' as *;
 
 main.light {
     @include spread-map($theme-map-light);

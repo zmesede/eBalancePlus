@@ -41,5 +41,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "../styles/components/equipments.scss";
+@use "../styles/components/equipments.scss"as *;
 </style>

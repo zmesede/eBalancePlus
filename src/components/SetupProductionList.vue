@@ -63,5 +63,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-    @import "../styles/components/setupProductionAndScenarioList.scss";
+    @use "../styles/components/setupProductionAndScenarioList.scss"as *;
 </style>

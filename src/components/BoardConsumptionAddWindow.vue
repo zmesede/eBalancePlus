@@ -94,5 +94,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "../styles/components/addConsumptionWindows.scss";
+@use "../styles/components/addConsumptionWindows.scss"as *;
 </style>

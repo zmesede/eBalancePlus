@@ -1,14 +1,14 @@
-@import './base/reset.scss';
-@import './base/typography.scss';
+@use './base/reset.scss' as *;
+@use './base/typography.scss' as *;
 
-@import './layout/footer.scss';
-@import './layout/navigation.scss';
-@import './layout/vue.scss';
+@use './layout/footer.scss'as *;
+@use './layout/navigation.scss'as *;
+@use './layout/vue.scss'as *;
 
-@import './themes/themes.scss';
+@use './themes/themes.scss'as *;
 
-@import './utilities/mixins.scss';
-@import './utilities/variables.scss';
+@use './utilities/mixins.scss'as *;
+@use './utilities/variables.scss'as *;
 
-@import './views/home.scss';
-@import './views/game.scss';
+@use './views/home.scss'as *;
+@use './views/game.scss'as *;

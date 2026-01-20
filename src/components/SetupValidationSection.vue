@@ -70,5 +70,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import "../styles/components/setupValidationSection.scss";
+    @use "../styles/components/setupValidationSection.scss" as *;
 </style>

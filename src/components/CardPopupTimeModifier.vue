@@ -193,5 +193,5 @@ export default {
 </template>
 
 <style lang="scss">
-@import '../styles/components/cardPopupTimeModifier.scss';
+@use '../styles/components/cardPopupTimeModifier.scss' as *;
 </style>

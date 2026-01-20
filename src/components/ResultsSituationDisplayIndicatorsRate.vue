@@ -41,5 +41,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    @import "../styles/components/resultsSituationDisplayIndicatorsRate.scss";
+    @use "../styles/components/resultsSituationDisplayIndicatorsRate.scss"as *;
 </style>

@@ -35,5 +35,5 @@
 </template>
 
 <style lang="scss">
-  @import '../styles/layout/navigation.scss';
+  @use '../styles/layout/navigation.scss' as *;
 </style>

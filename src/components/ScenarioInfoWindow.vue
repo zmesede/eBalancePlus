@@ -123,5 +123,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import '../styles/components/ScenarioInfoWindow.scss';
+@use '../styles/components/ScenarioInfoWindow.scss'as *;
 </style>

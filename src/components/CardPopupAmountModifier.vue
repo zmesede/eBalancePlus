@@ -139,5 +139,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/cardPopupAmountModifier.scss';
+    @use '../styles/components/cardPopupAmountModifier.scss' as *;
 </style>

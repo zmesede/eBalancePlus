@@ -1,4 +1,4 @@
-@import '../utilities/mixins.scss';
+@use '../utilities/mixins.scss' as *;
 
 .results-menu-confirmation{
     @include overlay-popup-window-centered;

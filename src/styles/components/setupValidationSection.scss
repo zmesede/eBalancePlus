@@ -1,4 +1,4 @@
-@import '../utilities/mixins.scss';
+@use '../utilities/mixins.scss' as *;
 
 .validation-section{
     background-color: var(--theme-color-background);

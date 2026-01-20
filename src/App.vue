@@ -11,5 +11,5 @@ import TheNavBar from './layout/TheNavBar.vue'
 </template>
 
 <style lang="scss">
-  @import './styles/global.scss';
+  @use './styles/global.scss' as *;
 </style>

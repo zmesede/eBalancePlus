@@ -30,5 +30,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/cardPopupModificationButtons.scss';
+    @use '../styles/components/cardPopupModificationButtons.scss' as *;
 </style>

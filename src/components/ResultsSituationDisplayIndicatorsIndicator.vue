@@ -145,5 +145,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import "../styles/components/resultsSituationDisplayIndicatorsIndicator.scss";
+    @use "../styles/components/resultsSituationDisplayIndicatorsIndicator.scss"as *;
 </style>

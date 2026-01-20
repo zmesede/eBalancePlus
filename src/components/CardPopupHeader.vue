@@ -36,5 +36,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import '../styles/components/cardPopupHeader.scss';
+    @use '../styles/components/cardPopupHeader.scss' as *;
 </style>

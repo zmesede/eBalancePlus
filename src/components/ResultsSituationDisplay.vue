@@ -61,5 +61,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import "../styles/components/resultsSituationDisplay.scss";
+    @use "../styles/components/resultsSituationDisplay.scss"as *;
 </style>

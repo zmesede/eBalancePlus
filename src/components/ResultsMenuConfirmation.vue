@@ -39,5 +39,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import "../styles/components/resultsMenuConfirmation.scss";
+    @use "../styles/components/resultsMenuConfirmation.scss"as *;
 </style>

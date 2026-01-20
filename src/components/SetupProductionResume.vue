@@ -58,5 +58,5 @@ export default {
 </template>
 
 <style scoped lang="scss">
-    @import "../styles/components/setupProductionAndScenarioResume.scss";
+    @use "../styles/components/setupProductionAndScenarioResume.scss"as *;
 </style>

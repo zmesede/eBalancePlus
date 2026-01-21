@@ -12,6 +12,7 @@ export default {
       moneyStore: useMoneyStore(),
       resultsStore: useResultsStore(),
       multiplayerStore: useMultiplayerStore(),
+      boardStore: useBoardStore(),
     }
   },
   methods: {
@@ -24,6 +25,7 @@ export default {
       this.initiateGamePage()
     },
     initiateGamePage() {
+      this.boardStore.resetBoard()
       this.consumptionStore.addInitialConsumptionToConsumptionList()
       this.equipmentStore.setAvailableEquipments()
       this.energyStore.getBatteryEquipmentTypes()

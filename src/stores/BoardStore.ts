@@ -49,6 +49,13 @@ export const useBoardStore = defineStore({
         }
     },
     actions: {
+        resetBoard() {
+            this.board.consumptionTiles = []
+            this.board.productionTiles = []
+            this.clickedTile = emptyTile
+            this.clickedProductionTile = emptyTile
+            this.isTileClicked = false
+        },
 
         setTilesFromProductionList() {
             const productionCurve: number[] = useGameParametersStore().getProductionCurveTotal

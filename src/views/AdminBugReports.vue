@@ -2,7 +2,7 @@
 import {onMounted, ref} from 'vue'
 import {
   fetchBugReports,
-  screenshotUrl,
+  fetchScreenshot,
   deleteBugReport,
   type AdminBugReport
 } from '../services/AdminBugReport'
@@ -25,11 +25,19 @@ function sanitizeTiles(tiles: any[]) {
   return tiles.map(({iconBase64, ...rest}) => rest)
 }
 
-function showScreenshot(id: string) {
-  openScreenshot.value = screenshotUrl(id)
+async function showScreenshot(id: string) {
+  try {
+    openScreenshot.value = await fetchScreenshot(id)
+  } catch (err) {
+    console.error(err)
+    alert('Failed to load screenshot')
+  }
 }
 
 function closeScreenshot() {
+  if (openScreenshot.value) {
+    URL.revokeObjectURL(openScreenshot.value)
+  }
   openScreenshot.value = null
 }
 
@@ -94,17 +102,11 @@ async function confirmDelete(id: string) {
           </ul>
         </td>
         <td>
-          <button @click="showScreenshot(r.id)">
-            View
-          </button>
+          <button @click="showScreenshot(r.id)">View</button>
         </td>
         <td>
-          <div
-              v-if="openScreenshot"
-              class="modal"
-              @click.self="closeScreenshot"
-          >
-            <img :src="openScreenshot"/>
+          <div v-if="openScreenshot" class="modal" @click.self="closeScreenshot">
+            <img :src="openScreenshot" />
           </div>
         </td>
         <td>

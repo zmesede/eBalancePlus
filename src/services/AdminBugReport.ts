@@ -46,3 +46,18 @@ export async function deleteBugReport(id: string): Promise<void> {
         throw new Error(await res.text())
     }
 }
+
+export async function fetchScreenshot(id: string): Promise<string> {
+    const res = await fetch(`/api/admin/bug-reports/${id}/screenshot`, {
+        headers: {
+            Authorization: 'ADMIN_SESSION_OK'
+        }
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to load screenshot')
+    }
+
+    const blob = await res.blob()
+    return URL.createObjectURL(blob)
+}

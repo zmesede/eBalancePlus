@@ -125,6 +125,7 @@ async function confirmDelete(id: string) {
 
 <style scoped>
 .admin-container {
+  margin-top: 2vh;
   padding: 1rem;
 }
 

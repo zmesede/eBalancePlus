@@ -30,5 +30,5 @@ export default {
 </template>
 
 <style lang="scss">
-    @import "../styles/views/setup.scss";
+    @use "../styles/views/setup.scss" as *;
 </style>

@@ -1,4 +1,4 @@
-@import '../utilities/mixins.scss';
+@use '../utilities/mixins.scss' as *;
 
 #home-page {
   @include for-desktop-up {
